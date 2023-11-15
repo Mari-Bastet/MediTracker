@@ -1,6 +1,7 @@
 package br.com.meditracker.controller;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -44,5 +45,24 @@ public class PacienteController {
     		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
     	}
     }
+    
+    @POST
+    public Response adicionarPaciente(Paciente paciente) {
+        
+        
+        try {
+            
+            pacienteService.insereNovoPaciente(paciente);
+            //pacienteService.fechaConexao();
+            
+            return Response.status(Response.Status.CREATED).build();
+            
+        }catch(RuntimeException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
+
+}
 
 }

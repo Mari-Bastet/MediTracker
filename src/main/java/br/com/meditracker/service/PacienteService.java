@@ -13,4 +13,8 @@ public class PacienteService {
 		return paciente;
 	}
 	
+	public void insereNovoPaciente(Paciente paciente) {
+		pacienteDAO.cadastraPaciente(paciente);
+	}
+	
 }

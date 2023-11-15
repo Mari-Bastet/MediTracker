@@ -1,5 +1,7 @@
 package br.com.meditracker.dominio;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,6 +37,8 @@ public class Paciente {
 		this.email_paciente = email_paciente;
 	}
 	  
+	  public Paciente() {}
+	  
 	  public int getId_paciente() {
 			return id_paciente;
 		}
@@ -52,7 +56,8 @@ public class Paciente {
 		}
 
 		public Date getData_nascimento_paciente() {
-			return data_nascimento_paciente;
+	       return data_nascimento_paciente;
+	        
 		}
 
 		public void setData_nascimento_paciente(Date data_nascimento_paciente) {

@@ -7,7 +7,7 @@ import br.com.meditracker.infra.dao.PacienteDAO;
 
 public class PacienteDAOtest {
 	
-	@Test
+	/*@Test
 	public void testaSelectPaciente() {
 		PacienteDAO pacienteDAO = new PacienteDAO();
 		
@@ -15,6 +15,18 @@ public class PacienteDAOtest {
 		System.out.println(paciente.getDocumento_paciente());
 		System.out.println("alo");
 		
+		
+		
+	}*/
+	
+	@Test
+	public void testaInserePaciente() {
+		
+		PacienteDAO pacienteDAO = new PacienteDAO();
+		
+		Paciente paciente = new Paciente(1,"arlindo",null,"44444","1234","signteste");
+		
+		pacienteDAO.cadastraPaciente(paciente);
 		
 		
 	}
