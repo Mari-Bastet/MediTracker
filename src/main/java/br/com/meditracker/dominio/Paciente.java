@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Paciente {
@@ -14,8 +15,9 @@ public class Paciente {
 	 @JsonProperty
 	  private String nome_paciente;
 
-	  @JsonProperty           
-	  private Date data_nascimento_paciente;
+	  @JsonProperty 
+	  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
+	  private LocalDate data_nascimento_paciente;
 
 	  @JsonProperty 
 	  private String documento_paciente ;
@@ -26,7 +28,7 @@ public class Paciente {
 	  @JsonProperty         
 	  private String email_paciente;
 	
-	  public Paciente(int id_paciente, String nome_paciente, Date data_nascimento_paciente, String documento_paciente,
+	  public Paciente(int id_paciente, String nome_paciente, LocalDate data_nascimento_paciente, String documento_paciente,
 			String senha_paciente, String email_paciente) {
 
 		this.id_paciente = id_paciente;
@@ -55,12 +57,12 @@ public class Paciente {
 			this.nome_paciente = nome_paciente;
 		}
 
-		public Date getData_nascimento_paciente() {
+		public LocalDate getData_nascimento_paciente() {
 	       return data_nascimento_paciente;
 	        
 		}
 
-		public void setData_nascimento_paciente(Date data_nascimento_paciente) {
+		public void setData_nascimento_paciente(LocalDate data_nascimento_paciente) {
 			this.data_nascimento_paciente = data_nascimento_paciente;
 		}
 

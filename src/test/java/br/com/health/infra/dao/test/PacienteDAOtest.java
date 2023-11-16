@@ -1,5 +1,7 @@
 package br.com.health.infra.dao.test;
 
+import java.text.SimpleDateFormat;
+
 import org.junit.Test;
 
 import br.com.meditracker.dominio.Paciente;
@@ -23,6 +25,7 @@ public class PacienteDAOtest {
 	public void testaInserePaciente() {
 		
 		PacienteDAO pacienteDAO = new PacienteDAO();
+		
 		
 		Paciente paciente = new Paciente(1,"arlindo",null,"44444","1234","signteste");
 		

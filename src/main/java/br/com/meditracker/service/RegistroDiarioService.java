@@ -9,6 +9,8 @@ public class RegistroDiarioService {
 	
 	public void insereRegistroDiario(RegistroDiario registroDiario, String documento_paciente) {
 		registroDiarioDAO.cadastraRegistroDiario(registroDiario, documento_paciente);
+	
+	
 	}
 		
 }

@@ -32,7 +32,7 @@ public class PacienteController {
 
         if (paciente == null) {
             status = Response.Status.NOT_FOUND;
-            return Response.status(status).entity("Paciente não encontrado, verifique os dados informados").build();
+            return Response.status(status).entity("Login incorreto, favor verifique os dados informados").build();
         } else {
             status = Response.Status.OK;
             return Response.status(status).entity(paciente).build();
@@ -40,7 +40,6 @@ public class PacienteController {
         
         
     	}catch(RuntimeException e) {
-    		System.out.println(e.getMessage());
     		e.printStackTrace();
     		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
     	}

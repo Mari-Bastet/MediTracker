@@ -46,17 +46,27 @@ public class PacienteDAO{
     	
     
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            	java.util.Date data_recebida = null;
+            	Date data_recebida = null;
             	java.sql.Date  dataInsert = null;
             	
-            	if (paciente.getData_nascimento_paciente() != null) {
-              	data_recebida = paciente.getData_nascimento_paciente();
+            	data_recebida = Date.valueOf(paciente.getData_nascimento_paciente());    
+            	//dataInsert = Date.valueOf(data_recebida);
+            	
+              	//data_recebida = paciente.getData_nascimento_paciente();//paciente.getData_nascimento_paciente();
+              /*d	System.out.println(currentDate);
               	dataInsert = new java.sql.Date(data_recebida.getTime());
-
-            	}
+              	System.err.println(dataInsert);
+              	
+              	
+            	if (paciente.getData_nascimento_paciente() != null) {
+              	data_recebida = new java.util.Date();//paciente.getData_nascimento_paciente();
+              	System.out.println(data_recebida);
+              	dataInsert = new java.sql.Date(data_recebida.getTime());
+	
+            	}*/
               	
                 pstmt.setString(1, paciente.getNome_paciente());
-                pstmt.setDate(2, dataInsert);
+                pstmt.setDate(2, data_recebida);
                 pstmt.setString(3, paciente.getDocumento_paciente());
                 pstmt.setString(4, paciente.getSenha_paciente());
                 pstmt.setString(5, paciente.getEmail_paciente());
@@ -94,8 +104,10 @@ public class PacienteDAO{
             	int id_paciente = rs.getInt("ID_PACIENTE");
             	String nome_paciente = rs.getString("NOME_PACIENTE");
             	
-              	java.util.Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
-            	java.sql.Date  data_select = new java.sql.Date(data_nascimento_paciente.getTime());
+              	Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
+            	
+              	LocalDate data_select = data_nascimento_paciente.toLocalDate();
+            	
             	
       
                 //Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
@@ -129,7 +141,7 @@ public class PacienteDAO{
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
