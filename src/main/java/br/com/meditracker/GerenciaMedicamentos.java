@@ -7,7 +7,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-public class MainClass{
+public class GerenciaMedicamentos{
 
 	 public static final String BASE_URI = "http://localhost:8080/";
 

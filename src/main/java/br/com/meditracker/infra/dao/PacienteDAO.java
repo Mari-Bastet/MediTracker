@@ -6,12 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import br.com.meditracker.dominio.ImplementaPaciente;
 import br.com.meditracker.dominio.Paciente;
 import br.com.meditracker.infra.*;
 
 import java.sql.ResultSet;
 
-public class PacienteDAO {
+public class PacienteDAO{
     Connection conn = new ConnectionFactory().criaConexao();
     
     
@@ -96,7 +97,7 @@ public class PacienteDAO {
               	java.util.Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
             	java.sql.Date  data_select = new java.sql.Date(data_nascimento_paciente.getTime());
             	
-            	
+      
                 //Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
                 //LocalDate data_nascimento_paciente = (dataNascimentoConv != null) ? dataNascimentoConv.toLocalDate() : null;
                 String email_paciente = rs.getString("EMAIL_PACIENTE");
@@ -117,23 +118,19 @@ public class PacienteDAO {
             
             selectPaciente.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage() + "Não foi possível encontrar o paciente");
+            throw new RuntimeException(e.getMessage());
         }
 
         return paciente;
     }
 
-	public void fechaConexao() {
-		
+
+	public void fecharConexao() {
 		try {
 			conn.close();
-			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	

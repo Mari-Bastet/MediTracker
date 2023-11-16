@@ -2,12 +2,19 @@ package br.com.meditracker.dominio;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RegistroDiario {
 	
+	@JsonProperty
 	private int id_registro_diario;
+	@JsonProperty
 	private String descricao_registro;
+	@JsonProperty
 	private int id_paciente;
+	@JsonProperty
 	private int humor;
+	@JsonProperty
 	private Date data_registro;
 	
 	public RegistroDiario(int id_registro_diario, String descricao_registro, int id_paciente, int humor,
@@ -19,6 +26,8 @@ public class RegistroDiario {
 		this.humor = humor;
 		this.data_registro = data_registro;
 	}
+	
+	public RegistroDiario() {};
 	
 	public int getId_registro_diario() {
 		return id_registro_diario;

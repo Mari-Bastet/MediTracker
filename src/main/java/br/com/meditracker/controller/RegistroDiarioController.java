@@ -3,6 +3,7 @@ package br.com.meditracker.controller;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import br.com.meditracker.dominio.Paciente;
@@ -16,7 +17,7 @@ public class RegistroDiarioController {
 	
 	@POST
     public Response adicionarNovoRegistro(RegistroDiario registroDiario
-    		,@PathParam("documento_paciente") String documento_paciente) {
+    		,@QueryParam("documento_paciente") String documento_paciente) {
         
         
         try {
