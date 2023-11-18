@@ -6,17 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.meditracker.dominio.Doenca;
 import br.com.meditracker.dominio.Medicamento;
 
 public class DoencaDAO {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
-	public ArrayList<Medicamento> listaMedicamentos() {
+	public ArrayList<Doenca> listaMedicamentos() {
 	    
-	    ArrayList<Medicamento> medicamentos = new ArrayList<>();
+	    ArrayList<Doenca> doencas = new ArrayList<>();
 	    
-		String sqlSelect = "select * from tb_mtc_medicamento";
+		String sqlSelect = "select * from tb_mtc_doenca";
 		
 		try  {
 			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
@@ -24,14 +25,12 @@ public class DoencaDAO {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Medicamento medicamento = new Medicamento();
+				Doenca doenca = new Doenca();
 				
-				medicamento.setId_medicamento(rs.getInt("ID_MEDICAMENTO"));
-				medicamento.setDescricao_medicamento(rs.getString("DESCRICAO_MEDICAMENTO"));
-				medicamento.setNome_medicamento(rs.getString("NOME_MEDICAMENTO"));
-				medicamento.setDosagem_medicamento(rs.getDouble("DOSAGEM_MEDICAMENTO"));
+				doenca.setIdDoenca(rs.getInt("ID_DOENCA"));
+				doenca.setNomeDoenca(rs.getString("NOME_DOENCA"));
 				
-				medicamentos.add(medicamento);
+				doencas.add(doenca);
 		}
 			
 					
@@ -40,7 +39,7 @@ public class DoencaDAO {
 			
 			
 		}
-		return medicamentos;
+		return doencas;
 		
 	}
 	

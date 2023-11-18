@@ -4,63 +4,61 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Medicamento {
 	
-	@JsonProperty("id_medicamento")
-	int     id_medicamento;             
+	@JsonProperty
+	private int     idMedicamento;             
 
-	@JsonProperty("nome_medicamento")
-	String nome_medicamento;       
+	@JsonProperty
+	private String nomeMedicamento;       
 
-	@JsonProperty("descricao_medicamento")
-	String descricao_medicamento; 
+	@JsonProperty
+	private String descricaoMedicamento; 
 
-	@JsonProperty("dosagem_medicamento")
-	Double dosagem_medicamento;
+	@JsonProperty
+	private Double dosagemMedicamento;
 	
-	@JsonProperty("tipo_dosagem_medicamento")
-	String tipo_dosagem_medicamento;
+	@JsonProperty
+	private String tipoDosagemMedicamento;
 	
-	@JsonProperty("id_med_dosagem")
-	int id_med_dosagem;
 	
-	public Medicamento(int id_medicamento, String nome_medicamento, String descricao_medicamento,
-			Double dosagem_medicamento) {
-		this.id_medicamento = id_medicamento;
-		this.nome_medicamento = nome_medicamento;
-		this.descricao_medicamento = descricao_medicamento;
-		this.dosagem_medicamento = dosagem_medicamento;
+	public Medicamento(int idMedicamento, String nomeMedicamento, String descricaoMedicamento,
+			Double dosagemMedicamento) {
+		this.idMedicamento = idMedicamento;
+		this.nomeMedicamento = nomeMedicamento;
+		this.descricaoMedicamento = descricaoMedicamento;
+		this.dosagemMedicamento = dosagemMedicamento;
 	}
 	
 	public Medicamento(){};
 
-	public int getId_medicamento() {
-		return id_medicamento;
+	public int getIdMedicamento() {
+		return idMedicamento;
 	}
 
-	public void setId_medicamento(int id_medicamento) {
-		this.id_medicamento = id_medicamento;
+	public void setIdMedicamento(int idMedicamento) {
+		this.idMedicamento = idMedicamento;
 	}
 
-	public String getNome_medicamento() {
-		return nome_medicamento;
+	public String getNomeMedicamento() {
+		return nomeMedicamento;
 	}
 
-	public void setNome_medicamento(String nome_medicamento) {
-		this.nome_medicamento = nome_medicamento;
+	public void setNomeMedicamento(String nomeMedicamento) {
+		this.nomeMedicamento = nomeMedicamento;
 	}
 
-	public String getDescricao_medicamento() {
-		return descricao_medicamento;
+	public String getDescricaoMedicamento() {
+		return descricaoMedicamento;
 	}
 
-	public void setDescricao_medicamento(String descricao_medicamento) {
-		this.descricao_medicamento = descricao_medicamento;
+	public void setDescricaoMedicamento(String descricaoMedicamento) {
+		this.descricaoMedicamento = descricaoMedicamento;
 	}
 
-	public Double getDosagem_medicamento() {
-		return dosagem_medicamento;
+	public Double getDosagemMedicamento() {
+		return dosagemMedicamento;
 	}
 
-	public void setDosagem_medicamento(Double dosagem_medicamento) {
-		this.dosagem_medicamento = dosagem_medicamento;
+	public void setDosagemMedicamento(Double dosagemMedicamento) {
+		this.dosagemMedicamento = dosagemMedicamento;
 	}
 }

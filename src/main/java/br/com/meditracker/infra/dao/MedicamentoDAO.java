@@ -16,7 +16,16 @@ public class MedicamentoDAO {
 	    
 	    ArrayList<Medicamento> medicamentos = new ArrayList<>();
 	    
-		String sqlSelect = "select * from tb_mtc_medicamento";
+		String sqlSelect = "select medi.id_med_dosagem"
+				+ ",               medi.nome_medicamento "
+				+ ",               medi.descricao_medicamento "
+				+ ",               medo.dosagem_medicamento "
+				+ "from tb_mtc_medicamento   medi "
+				+ ",    tb_mtc_forma_dosagem ford "
+				+ ",    tb_mtc_med_dosagem   medo "
+				+ "where medi.id_medicamento  = medo.id_medicamento "
+				+ "and   ford.id_tipo_dosagem = medo.id_tipo_dosagem "
+				+ "order by nome_medicamento";
 		
 		try  {
 			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
@@ -26,10 +35,10 @@ public class MedicamentoDAO {
 			while(rs.next()) {
 				Medicamento medicamento = new Medicamento();
 				
-				medicamento.setId_medicamento(rs.getInt("ID_MEDICAMENTO"));
-				medicamento.setDescricao_medicamento(rs.getString("DESCRICAO_MEDICAMENTO"));
-				medicamento.setNome_medicamento(rs.getString("NOME_MEDICAMENTO"));
-				medicamento.setDosagem_medicamento(rs.getDouble("DOSAGEM_MEDICAMENTO"));
+				medicamento.setIdMedicamento(rs.getInt("ID_MED_DOSAGEM"));
+				medicamento.setDescricaoMedicamento(rs.getString("DESCRICAO_MEDICAMENTO"));
+				medicamento.setNomeMedicamento(rs.getString("NOME_MEDICAMENTO"));
+				medicamento.setDosagemMedicamento(rs.getDouble("DOSAGEM_MEDICAMENTO"));
 				
 				medicamentos.add(medicamento);
 		}

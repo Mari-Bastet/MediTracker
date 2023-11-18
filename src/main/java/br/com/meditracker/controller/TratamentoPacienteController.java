@@ -24,13 +24,18 @@ public class TratamentoPacienteController {
 	//TratamentoPacienteService tratamentoDAO = new TratamentoPacienteService();
 	TratamentoPacienteService tratDAO = new TratamentoPacienteService();
 	
-	/*@GET
+	@GET
+	@Path("/{DOCUMENTO_PACIENTE}")
     @Produces(MediaType.APPLICATION_JSON)
-	public Response retornaTratamentoDiario(LocalDate dataRegistroDiario ) {
+	public Response retornaTratamentoDiario(@PathParam("DOCUMENTO_PACIENTE") String documentoPaciente
+										   ,@QueryParam("DATA_REGISTRO") String dataRegistro
+										   ) 
+	{
 		
 		
 		try {
-			ArrayList<TratamentoPaciente> medicamentos = tratamentoDAO.listaTratamentoDiarioPaciente();
+	        LocalDate data = LocalDate.parse(dataRegistro);
+			ArrayList<TratamentoPaciente> medicamentos = tratDAO.listaTratamentoDiarioPaciente(documentoPaciente, data);
 			Status status = null;
 			
 			if(medicamentos.isEmpty()) {
@@ -52,12 +57,12 @@ public class TratamentoPacienteController {
 		}
 		
 		
-	}*/
+	}
 	
 	
 	
 	@POST
-	@Path("{DOCUMENTO_PACIENTE}")
+	@Path("/{DOCUMENTO_PACIENTE}")
     public Response adicionarTratamento(TratamentoPaciente tratamentoPaciente
     									,@PathParam("DOCUMENTO_PACIENTE")String documentoPaciente) {
     	tratamentoPaciente.getIdtratMedPaciente();

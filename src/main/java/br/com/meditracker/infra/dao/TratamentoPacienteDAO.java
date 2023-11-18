@@ -53,31 +53,49 @@ public class TratamentoPacienteDAO {
 	}
 	
 	
-	public ArrayList<TratamentoPaciente> listaTratamentosDoDia(){
+	public ArrayList<TratamentoPaciente> listaTratamentosDoDia(String documentoPaciente, LocalDate dataRegistro){
 		ArrayList<TratamentoPaciente> tratsPaciente = new ArrayList<>();
 		
 		
-		String sqlSelect = "select trat.* "
+		//dataRegistro = LocalDate.of(2023,11,05);
+		Date dataRecebida = Date.valueOf(dataRegistro);
+		
+		String sqlSelect = "select trat.ID_TRAT_MED_PACIENTE "
+				+ ",                QUANTIDADE_MEDICAMENTO "
+				+ ",                MEDI.NOME_MEDICAMENTO "
 				+ "from TB_MTC_TRAT_MED_PACIENTE TRAT "
 				+ ",    TB_MTC_PACIENTE  PACI "
-				+ ",    TB_MTC_REGISTRO_DIARIO_MEDICAMENTO REGI "
-				+ "where PACI.id_paciente                =  5 "
+				+ ",    TB_MTC_REG_DIARIO_MEDICAMENTO REGI "
+				+ ",    TB_MTC_MED_DOSAGEM MEDO "
+				+ ",    TB_MTC_MEDICAMENTO MEDI "
+				+ "where PACI.documento_paciente                = ? "
 				+ "AND   PACI.ID_PACIENTE                = TRAT.ID_PACIENTE "
 				+ "and   REGI.id_trat_med_paciente(+)    = TRAT.id_trat_med_paciente "
-				+ "and  REGI.data_registro_diario_med(+) = sysdate "
-				+ "and  TRAT.data_inicio_tratamento     <= sysdate "
-				+ "and  TRAT.tratamento_ativo = 1";
+				+ "and   REGI.data_registro_diario_med(+) = to_date('" + dataRecebida + "','yyyy-mm-dd' ) "
+				+ "and   TRAT.data_inicio_tratamento     <= sysdate "
+				+ "and   TRAT.tratamento_ativo = 1 "
+				+ "and   TRAT.ID_MED_DOSAGEM = MEDO.ID_MED_DOSAGEM "
+				+ "and   MEDO.ID_MEDICAMENTO = MEDI.ID_MEDICAMENTO";
+		
+		
 			
 		try (PreparedStatement pstmt = conn.prepareStatement(sqlSelect)){
+
 			
+			pstmt.setString(1,documentoPaciente);
+			//pstmt.setDate(2, dataRecebida);
+			
+			System.out.println(sqlSelect);
+			System.out.println(documentoPaciente);
+			System.out.println(dataRecebida);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				TratamentoPaciente tratPaciente = new TratamentoPaciente();
-				//tratPaciente.setQuantidadeMedicamento(rs.getDouble("QUANTIDADE_MEDICAMENTO"));
-
-				//tratPaciente.setQuantidadeMedicamento(rs.getDouble("QUANTIDADE_MEDICAMENTO"));
-				//tratPaciente.setNomeMedicamento(rs.getString("NOME_MEDICAMENTO"));
+				
+				tratPaciente.setQuantidadeMedicamento(rs.getDouble("QUANTIDADE_MEDICAMENTO"));
+				tratPaciente.setIdtratMedPaciente(rs.getInt("ID_TRAT_MED_PACIENTE"));
+				tratPaciente.setNomeMedicamento(rs.getString("NOME_MEDICAMENTO"));
 				
 				tratsPaciente.add(tratPaciente);
 			}

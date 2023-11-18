@@ -27,6 +27,7 @@ public class PacienteController {
         Response.Status status = null;
         
         
+        
         try {
         Paciente paciente = pacienteService.realizaLoginPaciente(documentoPaciente, senhaPaciente);
 
@@ -48,7 +49,7 @@ public class PacienteController {
     @POST
     public Response adicionarPaciente(Paciente paciente) {
         
-        
+        System.out.println("aaa");
         try {
             
             pacienteService.insereNovoPaciente(paciente);
