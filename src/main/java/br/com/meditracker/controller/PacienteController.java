@@ -22,13 +22,13 @@ public class PacienteController {
     @GET
     @Path("/{DOCUMENTO_PACIENTE}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response retornaPacienteLogin(@PathParam("DOCUMENTO_PACIENTE") String DOCUMENTO_PACIENTE
-    									 ,@QueryParam("SENHA_PACIENTE") String SENHA_PACIENTE) {
+    public Response retornaPacienteLogin(@PathParam("DOCUMENTO_PACIENTE") String documentoPaciente
+    									 ,@QueryParam("SENHA_PACIENTE") String senhaPaciente) {
         Response.Status status = null;
         
         
         try {
-        Paciente paciente = pacienteService.realizaLoginPaciente(DOCUMENTO_PACIENTE, SENHA_PACIENTE);
+        Paciente paciente = pacienteService.realizaLoginPaciente(documentoPaciente, senhaPaciente);
 
         if (paciente == null) {
             status = Response.Status.NOT_FOUND;

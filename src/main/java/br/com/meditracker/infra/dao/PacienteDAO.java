@@ -17,8 +17,8 @@ public class PacienteDAO{
     
     
     public int retornaIdPaciente(String documento_paciente) {
-    String selectQuery = "select id_paciente from tb_paciente where documento_paciente = ?";
-    int id_paciente = 0; 
+    String selectQuery = "select id_paciente from tb_mtc_paciente where documento_paciente = ?";
+    int idPaciente = 0; 
     try{
         
     PreparedStatement execSelect = conn.prepareStatement(selectQuery);
@@ -28,10 +28,10 @@ public class PacienteDAO{
     ResultSet rs = execSelect.executeQuery();
     
     while(rs.next()) {
-    id_paciente = (rs.getInt("ID_PACIENTE"));
+    idPaciente = (rs.getInt("ID_PACIENTE"));
     }
     
-    return id_paciente;
+    return idPaciente;
     
     }catch(SQLException e) {
         throw new RuntimeException(e);
@@ -42,34 +42,19 @@ public class PacienteDAO{
     
     public void cadastraPaciente(Paciente paciente) {
     	
-		String sql = "INSERT INTO TB_PACIENTE (ID_PACIENTE , NOME_PACIENTE , DATA_NASCIMENTO_PACIENTE , DOCUMENTO_PACIENTE , SENHA_PACIENTE , EMAIL_PACIENTE)VALUES (SEQ_ID_PACIENTE.NEXTVAL,?,?,?,?,?)";
+		String sql = "INSERT INTO TB_MTC_PACIENTE (ID_PACIENTE , NOME_PACIENTE , DATA_NASCIMENTO_PACIENTE , DOCUMENTO_PACIENTE , SENHA_PACIENTE , EMAIL_PACIENTE)VALUES (SEQ_ID_PACIENTE.NEXTVAL,?,?,?,?,?)";
     	
     
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            	Date data_recebida = null;
+            	Date dataRecebida = null;
             	java.sql.Date  dataInsert = null;
             	
-            	data_recebida = Date.valueOf(paciente.getData_nascimento_paciente());    
-            	//dataInsert = Date.valueOf(data_recebida);
-            	
-              	//data_recebida = paciente.getData_nascimento_paciente();//paciente.getData_nascimento_paciente();
-              /*d	System.out.println(currentDate);
-              	dataInsert = new java.sql.Date(data_recebida.getTime());
-              	System.err.println(dataInsert);
-              	
-              	
-            	if (paciente.getData_nascimento_paciente() != null) {
-              	data_recebida = new java.util.Date();//paciente.getData_nascimento_paciente();
-              	System.out.println(data_recebida);
-              	dataInsert = new java.sql.Date(data_recebida.getTime());
-	
-            	}*/
-              	
-                pstmt.setString(1, paciente.getNome_paciente());
-                pstmt.setDate(2, data_recebida);
-                pstmt.setString(3, paciente.getDocumento_paciente());
-                pstmt.setString(4, paciente.getSenha_paciente());
-                pstmt.setString(5, paciente.getEmail_paciente());
+            	dataRecebida = Date.valueOf(paciente.getDataNascimentoPaciente());                  	
+                pstmt.setString(1, paciente.getNomePaciente());
+                pstmt.setDate(2, dataRecebida);
+                pstmt.setString(3, paciente.getDocumentoPaciente());
+                pstmt.setString(4, paciente.getSenhaPaciente());
+                pstmt.setString(5, paciente.getEmailPaciente());
                 pstmt.execute();
                 pstmt.close();
                 
@@ -85,36 +70,36 @@ public class PacienteDAO{
     	
     }*/
     
-    public Paciente realizaLogin(String documento_paciente, String senha_paciente) {
+    public Paciente realizaLogin(String documentoPaciente, String senhaPaciente) {
         Paciente paciente = null;
 
-        String sqlSelect = "SELECT ID_PACIENTE ,NOME_PACIENTE ,DATA_NASCIMENTO_PACIENTE ,DOCUMENTO_PACIENTE ,SENHA_PACIENTE,EMAIL_PACIENTE FROM TB_PACIENTE WHERE DOCUMENTO_PACIENTE = ? and SENHA_PACIENTE = ?";
+        String sqlSelect = "SELECT ID_PACIENTE ,NOME_PACIENTE ,DATA_NASCIMENTO_PACIENTE ,DOCUMENTO_PACIENTE ,SENHA_PACIENTE,EMAIL_PACIENTE FROM TB_MTC_PACIENTE WHERE DOCUMENTO_PACIENTE = ? and SENHA_PACIENTE = ?";
 
 
         try {
             PreparedStatement selectPaciente = conn.prepareStatement(sqlSelect);
-            selectPaciente.setString(1, documento_paciente);
-            selectPaciente.setString(2, senha_paciente);
+            selectPaciente.setString(1, documentoPaciente);
+            selectPaciente.setString(2, senhaPaciente);
 
             ResultSet rs = selectPaciente.executeQuery();
 
             while (rs.next()) {
             	
             	
-            	int id_paciente = rs.getInt("ID_PACIENTE");
-            	String nome_paciente = rs.getString("NOME_PACIENTE");
+            	int idPaciente = rs.getInt("ID_PACIENTE");
+            	String nomePaciente = rs.getString("NOME_PACIENTE");
             	
-              	Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
+              	Date dataNascimentoPaciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
             	
-              	LocalDate data_select = data_nascimento_paciente.toLocalDate();
+              	LocalDate dataSelect = dataNascimentoPaciente.toLocalDate();
             	
             	
       
-                //Date data_nascimento_paciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
-                //LocalDate data_nascimento_paciente = (dataNascimentoConv != null) ? dataNascimentoConv.toLocalDate() : null;
-                String email_paciente = rs.getString("EMAIL_PACIENTE");
+                //Date dataNascimentoPaciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
+                //LocalDate dataNascimentoPaciente = (dataNascimentoConv != null) ? dataNascimentoConv.toLocalDate() : null;
+                String emailPaciente = rs.getString("EMAIL_PACIENTE");
                 
-                paciente = new Paciente(id_paciente,nome_paciente,data_select,documento_paciente,senha_paciente,email_paciente);
+                paciente = new Paciente(idPaciente,nomePaciente,dataSelect,documentoPaciente,senhaPaciente,emailPaciente);
             	
             	/*paciente = new Paciente (rs.getInt("ID_PACIENTE")
 										 ,rs.getString("NOME_PACIENTE")
@@ -148,3 +133,4 @@ public class PacienteDAO{
 	
 
 }
+ 

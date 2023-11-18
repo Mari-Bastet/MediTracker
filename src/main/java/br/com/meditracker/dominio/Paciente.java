@@ -10,86 +10,83 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Paciente {
 	
 	 @JsonProperty
-	  private int id_paciente;  
+	  private int idPaciente;  
 
 	 @JsonProperty
-	  private String nome_paciente;
+	  private String nomePaciente;
 
 	  @JsonProperty 
 	  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
-	  private LocalDate data_nascimento_paciente;
+	  private LocalDate dataNascimentoPaciente;
 
-	  @JsonProperty 
-	  private String documento_paciente ;
+	  @JsonProperty
+	  private String documentoPaciente ;
 
 	  @JsonProperty     
-	  private String senha_paciente;
+	  private String senhaPaciente;
 
 	  @JsonProperty         
-	  private String email_paciente;
+	  private String emailPaciente;
 	
-	  public Paciente(int id_paciente, String nome_paciente, LocalDate data_nascimento_paciente, String documento_paciente,
-			String senha_paciente, String email_paciente) {
+	  public Paciente(int idPaciente, String nomePaciente, LocalDate dataNascimentoPaciente, String documentoPaciente,
+			String senhaPaciente, String emailPaciente) {
 
-		this.id_paciente = id_paciente;
-		this.nome_paciente = nome_paciente;
-		this.data_nascimento_paciente = data_nascimento_paciente;
-		this.documento_paciente = documento_paciente;
-		this.senha_paciente = senha_paciente;
-		this.email_paciente = email_paciente;
+		this.idPaciente = idPaciente;
+		this.nomePaciente = nomePaciente;
+		this.dataNascimentoPaciente = dataNascimentoPaciente;
+		this.documentoPaciente = documentoPaciente;
+		this.senhaPaciente = senhaPaciente;
+		this.emailPaciente = emailPaciente;
 	}
 	  
 	  public Paciente() {}
 	  
-	  public int getId_paciente() {
-			return id_paciente;
+	  public int getIdPaciente() {
+			return idPaciente;
 		}
 
-		public void setId_paciente(int id_paciente) {
-			this.id_paciente = id_paciente;
+		public void setIdPaciente(int idPaciente) {
+			this.idPaciente = idPaciente;
 		}
 
-		public String getNome_paciente() {
-			return nome_paciente;
+		public String getNomePaciente() {
+			return nomePaciente;
 		}
 
-		public void setNome_paciente(String nome_paciente) {
-			this.nome_paciente = nome_paciente;
+		public void setNomePaciente(String nomePaciente) {
+			this.nomePaciente = nomePaciente;
 		}
 
-		public LocalDate getData_nascimento_paciente() {
-	       return data_nascimento_paciente;
+		public LocalDate getDataNascimentoPaciente() {
+	       return dataNascimentoPaciente;
 	        
 		}
 
-		public void setData_nascimento_paciente(LocalDate data_nascimento_paciente) {
-			this.data_nascimento_paciente = data_nascimento_paciente;
+		public void setDataNascimentoPaciente(LocalDate dataNascimentoPaciente) {
+			this.dataNascimentoPaciente = dataNascimentoPaciente;
 		}
 
-		public String getDocumento_paciente() {
-			return documento_paciente;
+		public String getDocumentoPaciente() {
+			return documentoPaciente;
 		}
 
-		public void setDocumento_paciente(String documento_paciente) {
-			this.documento_paciente = documento_paciente;
+		public void setDocumentoPaciente(String documentoPaciente) {
+			this.documentoPaciente = documentoPaciente;
 		}
 
-		public String getSenha_paciente() {
-			return senha_paciente;
+		public String getSenhaPaciente() {
+			return senhaPaciente;
 		}
 
-		public void setSenha_paciente(String senha_paciente) {
-			this.senha_paciente = senha_paciente;
+		public void setSenhaPaciente(String senhaPaciente) {
+			this.senhaPaciente = senhaPaciente;
 		}
 
-		public String getEmail_paciente() {
-			return email_paciente;
+		public String getEmailPaciente() {
+			return emailPaciente;
 		}
 
-		public void setEmail_paciente(String email_paciente) {
-			this.email_paciente = email_paciente;
+		public void setEmailPaciente(String emailPaciente) {
+			this.emailPaciente = emailPaciente;
 		}
-
-	  
-	  
 }

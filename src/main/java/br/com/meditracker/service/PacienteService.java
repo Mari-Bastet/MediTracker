@@ -8,8 +8,8 @@ public class PacienteService {
 	private PacienteDAO pacienteDAO = new PacienteDAO();
 	
 
-	public Paciente realizaLoginPaciente(String documento_paciente, String senha_paciente){
-		Paciente paciente = pacienteDAO.realizaLogin(documento_paciente, senha_paciente);
+	public Paciente realizaLoginPaciente(String documentoPaciente, String senhaPaciente){
+		Paciente paciente = pacienteDAO.realizaLogin(documentoPaciente, senhaPaciente);
 		return paciente;
 	}
 	

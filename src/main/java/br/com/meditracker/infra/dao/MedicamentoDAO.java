@@ -16,7 +16,7 @@ public class MedicamentoDAO {
 	    
 	    ArrayList<Medicamento> medicamentos = new ArrayList<>();
 	    
-		String sqlSelect = "select * from tb_medicamento";
+		String sqlSelect = "select * from tb_mtc_medicamento";
 		
 		try  {
 			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);

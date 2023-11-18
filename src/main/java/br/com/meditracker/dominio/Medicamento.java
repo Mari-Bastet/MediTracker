@@ -1,11 +1,26 @@
 package br.com.meditracker.dominio;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Medicamento {
 	
-	int id_medicamento;                
+	@JsonProperty("id_medicamento")
+	int     id_medicamento;             
+
+	@JsonProperty("nome_medicamento")
 	String nome_medicamento;       
+
+	@JsonProperty("descricao_medicamento")
 	String descricao_medicamento; 
+
+	@JsonProperty("dosagem_medicamento")
 	Double dosagem_medicamento;
+	
+	@JsonProperty("tipo_dosagem_medicamento")
+	String tipo_dosagem_medicamento;
+	
+	@JsonProperty("id_med_dosagem")
+	int id_med_dosagem;
 	
 	public Medicamento(int id_medicamento, String nome_medicamento, String descricao_medicamento,
 			Double dosagem_medicamento) {

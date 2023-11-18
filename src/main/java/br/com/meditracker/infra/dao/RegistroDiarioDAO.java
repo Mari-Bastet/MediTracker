@@ -13,7 +13,7 @@ public class RegistroDiarioDAO {
 	
     public void cadastraRegistroDiario(RegistroDiario registroDiario, String documento_paciente) {
     	
-		String sql = "insert into tb_registro_diario (ID_REGISTRO_DIARIO ,DESCRICAO_REGISTRO ,ID_PACIENTE ,HUMOR ,DATA_REGISTRO ) values(SEQ_ID_REGISTRO_DIARIO.nextval, ?, ?, ?, ?)";
+		String sql = "insert into tb_mtc_registro_diario (ID_REGISTRO_DIARIO ,DESCRICAO_REGISTRO ,ID_PACIENTE ,HUMOR ,DATA_REGISTRO ) values(SEQ_ID_REGISTRO_DIARIO.nextval, ?, ?, ?, ?)";
     	
         PacienteDAO pacienteDAO = new PacienteDAO();
 
@@ -45,7 +45,7 @@ public class RegistroDiarioDAO {
     
     public void alteraRegistroDiario(RegistroDiario registroDiario, String documento_paciente) {
     	
-    	String sql = "update of_registro_diario set descricao_registro = ?, humor = ? where data_registro = ? and id_paciente = ?";
+    	String sql = "update tb_mtc_registro_diario set descricao_registro = ?, humor = ? where data_registro = ? and id_paciente = ?";
     	
     	try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
         	
