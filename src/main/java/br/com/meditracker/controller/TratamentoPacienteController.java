@@ -28,8 +28,7 @@ public class TratamentoPacienteController {
 	@Path("/{DOCUMENTO_PACIENTE}")
     @Produces(MediaType.APPLICATION_JSON)
 	public Response retornaTratamentoDiario(@PathParam("DOCUMENTO_PACIENTE") String documentoPaciente
-										   ,@QueryParam("DATA_REGISTRO") String dataRegistro
-										   ) 
+										   ,@QueryParam("DATA_REGISTRO") String dataRegistro) 
 	{
 		
 		
@@ -59,8 +58,7 @@ public class TratamentoPacienteController {
 		
 	}
 	
-	
-	
+
 	@POST
 	@Path("/{DOCUMENTO_PACIENTE}")
     public Response adicionarTratamento(TratamentoPaciente tratamentoPaciente

@@ -28,23 +28,31 @@ public class TratamentoPacienteDAO {
         	//System.out.println(tratamentoPaciente.getQuantidadeMedicamento());
             Date dataRecebida = null;
             
+            
             dataRecebida = Date.valueOf(tratamentoPaciente.getDataInicioTratamento());   
             
-       
             pstmt.setDouble(1, tratamentoPaciente.getQuantidadeMedicamento());
+            System.out.println("entrou1");
+
             pstmt.setDate(2,dataRecebida);
+            System.out.println("entrou2");
+
             pstmt.setInt(3, tratamentoPaciente.getIdMedicamento());
+            
+            System.out.println("entrou3");
+
             pstmt.setInt(4, tratamentoPaciente.getIdDoenca());
+            
+            System.out.println("entrou4");
+
             pstmt.setInt(5,pacienteDAO.retornaIdPaciente(documentoPaciente));
+            
+            System.out.println("entrou5");
+
+
             pstmt.execute();
             pstmt.close();
 
-        	/*if (paciente.getData_nascimento_paciente() != null) {
-          	data_recebida = paciente.getData_nascimento_paciente();
-          	dataInsert = new java.sql.Date(data_recebida.getTime());
-
-        	}*/
-          	
  
             
         } catch (SQLException e) {
@@ -54,10 +62,10 @@ public class TratamentoPacienteDAO {
 	
 	
 	public ArrayList<TratamentoPaciente> listaTratamentosDoDia(String documentoPaciente, LocalDate dataRegistro){
+		
 		ArrayList<TratamentoPaciente> tratsPaciente = new ArrayList<>();
 		
 		
-		//dataRegistro = LocalDate.of(2023,11,05);
 		Date dataRecebida = Date.valueOf(dataRegistro);
 		
 		String sqlSelect = "select trat.ID_TRAT_MED_PACIENTE "
@@ -71,7 +79,7 @@ public class TratamentoPacienteDAO {
 				+ "where PACI.documento_paciente                = ? "
 				+ "AND   PACI.ID_PACIENTE                = TRAT.ID_PACIENTE "
 				+ "and   REGI.id_trat_med_paciente(+)    = TRAT.id_trat_med_paciente "
-				+ "and   REGI.data_registro_diario_med(+) = to_date('" + dataRecebida + "','yyyy-mm-dd' ) "
+				+ "and   REGI.data_registro_diario_med(+) = to_date('" + dataRecebida + "','yyyy-mm-dd') "
 				+ "and   TRAT.data_inicio_tratamento     <= sysdate "
 				+ "and   TRAT.tratamento_ativo = 1 "
 				+ "and   TRAT.ID_MED_DOSAGEM = MEDO.ID_MED_DOSAGEM "
@@ -83,11 +91,7 @@ public class TratamentoPacienteDAO {
 
 			
 			pstmt.setString(1,documentoPaciente);
-			//pstmt.setDate(2, dataRecebida);
-			
-			System.out.println(sqlSelect);
-			System.out.println(documentoPaciente);
-			System.out.println(dataRecebida);
+
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -107,6 +111,14 @@ public class TratamentoPacienteDAO {
 		
 		return tratsPaciente;
 
+	}
+	
+	public void fecharConexao() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 

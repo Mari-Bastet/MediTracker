@@ -6,18 +6,14 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
-import br.com.meditracker.dominio.Medicamento;
-import br.com.meditracker.service.MedicamentoService;
+import br.com.meditracker.dominio.Doenca;
+import br.com.meditracker.service.DoencaService;
 
-@Path("medicamento")
-public class MedicamentoController {
-
-
-	MedicamentoService medicamentoService = new MedicamentoService(); 
+public class DoencaController {
 	
+	DoencaService doencaService = new DoencaService();
 	
 	@GET
 	@Path("/todos")
@@ -27,17 +23,17 @@ public class MedicamentoController {
 		Response.Status status = null;
 		
 		try {
-			ArrayList<Medicamento> medicamentos = medicamentoService.retornaMedicamentos();
-			if(medicamentos.isEmpty()) {
+			ArrayList<Doenca> doencas = doencaService.listaDoencas();
+			if(doencas.isEmpty()) {
 				
 				status = Response.Status.NOT_FOUND;
-				return Response.status(status).entity("Não há remédios para listar.").build();
+				return Response.status(status).entity("Não há doenças para listar.").build();
 
 			}
 			else {
 				
 				status = Response.Status.OK;
-				return Response.status(status).entity(medicamentos).build();
+				return Response.status(status).entity(doencas).build();
 
 			}
 						
@@ -47,4 +43,5 @@ public class MedicamentoController {
 		}
 
 	}
+
 }

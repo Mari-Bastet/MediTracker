@@ -22,7 +22,7 @@ public class GerenciaMedicamentos{
 
    public static void main(String[] args) throws IOException {
        final HttpServer server = startServer();
-       System.out.println(String.format("Jersey app started with endpoints available at "
+       System.out.println(String.format("Iniciando Meditracker..."
                + "%s%nHit Ctrl-C to stop it...", BASE_URI));
        System.in.read();
        server.stop();

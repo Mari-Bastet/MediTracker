@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.meditracker.dominio.Doenca;
+import br.com.meditracker.dominio.ImplDoenca;
 import br.com.meditracker.dominio.Medicamento;
 
-public class DoencaDAO {
+public class DoencaDAO implements ImplDoenca {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
-	public ArrayList<Doenca> listaMedicamentos() {
+	public ArrayList<Doenca> listaDoencas() {
 	    
 	    ArrayList<Doenca> doencas = new ArrayList<>();
 	    

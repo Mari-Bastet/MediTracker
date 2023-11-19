@@ -49,7 +49,6 @@ public class PacienteController {
     @POST
     public Response adicionarPaciente(Paciente paciente) {
         
-        System.out.println("aaa");
         try {
             
             pacienteService.insereNovoPaciente(paciente);

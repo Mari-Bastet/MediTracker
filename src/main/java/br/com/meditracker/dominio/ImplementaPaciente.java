@@ -9,5 +9,4 @@ public interface ImplementaPaciente {
 	 void cadastraPaciente(Paciente paciente);
 	
 	 void fecharConexao();
-	 
 }

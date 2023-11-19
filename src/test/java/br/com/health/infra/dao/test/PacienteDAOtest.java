@@ -21,6 +21,9 @@ public class PacienteDAOtest {
 		
 	}*/
 	
+	
+
+	
 	@Test
 	public void testaInserePaciente() {
 		

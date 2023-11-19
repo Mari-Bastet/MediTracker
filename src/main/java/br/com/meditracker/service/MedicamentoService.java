@@ -6,9 +6,10 @@ import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.infra.dao.MedicamentoDAO;
 
 public class MedicamentoService {
+	
+	MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
 	public ArrayList<Medicamento> retornaMedicamentos(){
-		MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 		
 		ArrayList<Medicamento> medicamentos = new ArrayList<>();
 		

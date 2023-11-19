@@ -10,11 +10,13 @@ public class PacienteService {
 
 	public Paciente realizaLoginPaciente(String documentoPaciente, String senhaPaciente){
 		Paciente paciente = pacienteDAO.realizaLogin(documentoPaciente, senhaPaciente);
+		pacienteDAO.fecharConexao();
 		return paciente;
 	}
 	
 	public void insereNovoPaciente(Paciente paciente) {
 		pacienteDAO.cadastraPaciente(paciente);
+		pacienteDAO.fecharConexao();
+
 	}
-	
 }

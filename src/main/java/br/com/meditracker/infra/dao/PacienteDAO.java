@@ -12,23 +12,23 @@ import br.com.meditracker.infra.*;
 
 import java.sql.ResultSet;
 
-public class PacienteDAO{
+public class PacienteDAO implements ImplementaPaciente{
     Connection conn = new ConnectionFactory().criaConexao();
     
     
-    public int retornaIdPaciente(String documento_paciente) {
+    public int retornaIdPaciente(String documentoPaciente) {
     String selectQuery = "select id_paciente from tb_mtc_paciente where documento_paciente = ?";
     int idPaciente = 0; 
     try{
-        
+        System.out.println(selectQuery);
     PreparedStatement execSelect = conn.prepareStatement(selectQuery);
     
-    execSelect.setString(1,documento_paciente);
+    execSelect.setString(1,documentoPaciente);
     
     ResultSet rs = execSelect.executeQuery();
     
     while(rs.next()) {
-    idPaciente = (rs.getInt("ID_PACIENTE"));
+    	idPaciente = (rs.getInt("ID_PACIENTE"));
     }
     
     return idPaciente;
@@ -64,16 +64,18 @@ public class PacienteDAO{
         		 	
     }
     
-    /*public Paciente verificaExistenciaPaciente(String documento_paciente) {
-    	
-    	aaaa
-    	
-    }*/
-    
     public Paciente realizaLogin(String documentoPaciente, String senhaPaciente) {
+    	
         Paciente paciente = null;
 
-        String sqlSelect = "SELECT ID_PACIENTE ,NOME_PACIENTE ,DATA_NASCIMENTO_PACIENTE ,DOCUMENTO_PACIENTE ,SENHA_PACIENTE,EMAIL_PACIENTE FROM TB_MTC_PACIENTE WHERE DOCUMENTO_PACIENTE = ? and SENHA_PACIENTE = ?";
+        String sqlSelect = "SELECT ID_PACIENTE "
+        		+ "			,NOME_PACIENTE "
+        		+ "         ,DATA_NASCIMENTO_PACIENTE "
+        		+ "         ,DOCUMENTO_PACIENTE "
+        		+ "         ,SENHA_PACIENTE,EMAIL_PACIENTE "
+        		+ "          FROM TB_MTC_PACIENTE "
+        		+ "          WHERE DOCUMENTO_PACIENTE = ? "
+        		+ "          and SENHA_PACIENTE = ?";
 
 
         try {
@@ -100,15 +102,7 @@ public class PacienteDAO{
                 String emailPaciente = rs.getString("EMAIL_PACIENTE");
                 
                 paciente = new Paciente(idPaciente,nomePaciente,dataSelect,documentoPaciente,senhaPaciente,emailPaciente);
-            	
-            	/*paciente = new Paciente (rs.getInt("ID_PACIENTE")
-										 ,rs.getString("NOME_PACIENTE")
-										 ,rs.getDate("DATA_NASCIMENTO_PACIENTE")
-										 ,rs.getString("DOCUMENTO_PACIENTE")
-										 ,rs.getString("SENHA_PACIENTE")
-										 ,rs.getString("EMAIL_PACIENTE")
-            			);
-            	*/
+
             }
             
                        
