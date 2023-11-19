@@ -16,6 +16,12 @@ public class TratamentoDiarioPacienteDAO {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
+    
+    
+    public void atualizaRegistroDiario(TratamentoDiarioPaciente tratamentoDiarioPaciente) {
+    	
+    	String sqlUpdate = "update TB_MTC_REG_DIARIO_MEDICAMENTO where idRegistroTratMed = ?";
+    	}
 	public void insereRegistroDiarioTratamento(TratamentoDiarioPaciente tratamentoDiarioPaciente) {
 		
 		String sqlInsert = "insert into TB_MTC_REG_DIARIO_MEDICAMENTO "

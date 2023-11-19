@@ -28,6 +28,7 @@ public class TratamentoDiarioPaciente {
 		this.staMedicamentoTomado = staMedicamentoTomado;
 	}
 	
+	public TratamentoDiarioPaciente() {};
 	
 
 	public int getIdRegistroDiarioMed() {

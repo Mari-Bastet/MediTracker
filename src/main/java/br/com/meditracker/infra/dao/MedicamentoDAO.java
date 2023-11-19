@@ -28,6 +28,8 @@ public class MedicamentoDAO {
 				+ "order by nome_medicamento";
 		
 		try  {
+			
+			System.out.println(sqlSelect);
 			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
 			
 			ResultSet rs = pstmt.executeQuery();
