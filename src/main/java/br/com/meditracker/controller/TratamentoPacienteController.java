@@ -61,7 +61,7 @@ public class TratamentoPacienteController {
 
 	@POST
 	@Path("/{DOCUMENTO_PACIENTE}")
-    public Response adicionarTratamento(TratamentoPaciente tratamentoPaciente
+    public Response adicionaTratamento(TratamentoPaciente tratamentoPaciente
     									,@PathParam("DOCUMENTO_PACIENTE")String documentoPaciente) {
     	tratamentoPaciente.getIdtratMedPaciente();
 

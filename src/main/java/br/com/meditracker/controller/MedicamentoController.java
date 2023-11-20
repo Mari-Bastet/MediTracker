@@ -27,7 +27,7 @@ public class MedicamentoController {
 		Response.Status status = null;
 		
 		try {
-			ArrayList<Medicamento> medicamentos = medicamentoService.retornaMedicamentos();
+			ArrayList<Medicamento> medicamentos = medicamentoService.listaMedicamentos();
 			if(medicamentos.isEmpty()) {
 				
 				status = Response.Status.NOT_FOUND;

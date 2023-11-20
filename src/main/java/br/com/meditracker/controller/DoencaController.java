@@ -18,7 +18,7 @@ public class DoencaController {
 	@GET
 	@Path("/todos")
     @Produces(MediaType.APPLICATION_JSON)
-	public Response listaMedicamentos() {
+	public Response listaDoencas() {
 		
 		Response.Status status = null;
 		

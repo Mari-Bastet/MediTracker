@@ -9,7 +9,7 @@ public class MedicamentoService {
 	
 	MedicamentoDAO medicamentoDAO = new MedicamentoDAO();
 
-	public ArrayList<Medicamento> retornaMedicamentos(){
+	public ArrayList<Medicamento> listaMedicamentos(){
 		
 		ArrayList<Medicamento> medicamentos = new ArrayList<>();
 		

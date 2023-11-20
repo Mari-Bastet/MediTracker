@@ -47,7 +47,7 @@ public class PacienteController {
     }
     
     @POST
-    public Response adicionarPaciente(Paciente paciente) {
+    public Response adicionaPaciente(Paciente paciente) {
         
         try {
             

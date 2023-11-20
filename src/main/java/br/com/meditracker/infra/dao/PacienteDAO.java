@@ -68,11 +68,12 @@ public class PacienteDAO implements ImplementaPaciente{
     	
         Paciente paciente = null;
 
-        String sqlSelect = "SELECT ID_PACIENTE "
-        		+ "			,NOME_PACIENTE "
-        		+ "         ,DATA_NASCIMENTO_PACIENTE "
-        		+ "         ,DOCUMENTO_PACIENTE "
-        		+ "         ,SENHA_PACIENTE,EMAIL_PACIENTE "
+        String sqlSelect = " SELECT ID_PACIENTE "
+        		+ "			 ,NOME_PACIENTE "
+        		+ "          ,DATA_NASCIMENTO_PACIENTE "
+        		+ "          ,DOCUMENTO_PACIENTE "
+        		+ "          ,SENHA_PACIENTE"
+        		+ "			 ,EMAIL_PACIENTE "
         		+ "          FROM TB_MTC_PACIENTE "
         		+ "          WHERE DOCUMENTO_PACIENTE = ? "
         		+ "          and SENHA_PACIENTE = ?";
