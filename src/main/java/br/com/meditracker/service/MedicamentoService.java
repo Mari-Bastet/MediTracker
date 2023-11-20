@@ -17,7 +17,7 @@ public class MedicamentoService {
 	}
 	
 
-	public ArrayList<Medicamento> listaMedicamentos(){
+	public ArrayList<Medicamento> retornaMedicamentos(){
 		
 		ArrayList<Medicamento> medicamentos = new ArrayList<>();
 		

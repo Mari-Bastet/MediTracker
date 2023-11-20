@@ -47,7 +47,7 @@ public class PacienteController {
     }
     
     @POST
-    public Response adicionaPaciente(Paciente paciente) {
+    public Response adicionarPaciente(Paciente paciente) {
         
         try {
             System.out.println(paciente.getDocumentoPaciente());

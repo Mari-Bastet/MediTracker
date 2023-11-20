@@ -9,7 +9,7 @@ public class TratamentoDiarioPacienteService {
 	
 	TratamentoDiarioPacienteDAO tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
 	
-	public void atualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
+	public void AtualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
 		
 		tratDiaPacienteDAO.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
 		
