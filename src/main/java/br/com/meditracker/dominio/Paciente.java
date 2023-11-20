@@ -1,8 +1,6 @@
 package br.com.meditracker.dominio;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,7 +17,7 @@ public class Paciente {
 	  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
 	  private LocalDate dataNascimentoPaciente;
 
-	  @JsonProperty
+	  @JsonProperty("documentoPaciente")
 	  private String documentoPaciente ;
 
 	  @JsonProperty     

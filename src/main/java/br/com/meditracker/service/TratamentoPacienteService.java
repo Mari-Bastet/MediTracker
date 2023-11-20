@@ -12,7 +12,7 @@ public class TratamentoPacienteService {
 	
 		TratamentoPacienteDAO tratamentoPacienteDAO = new TratamentoPacienteDAO();
 		TratamentoDiarioPacienteDAO tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
-		DoencaService doencaDAO = new DoencaService();
+		//DoencaService doencaDAO = new DoencaService();
 		
 		private TratamentoDiarioPaciente tratDiaPaciente;
 

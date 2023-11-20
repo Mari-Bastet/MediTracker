@@ -43,10 +43,12 @@ public class PacienteDAO implements ImplementaPaciente{
     public void cadastraPaciente(Paciente paciente) {
     	
 		String sql = "INSERT INTO TB_MTC_PACIENTE (ID_PACIENTE , NOME_PACIENTE , DATA_NASCIMENTO_PACIENTE , DOCUMENTO_PACIENTE , SENHA_PACIENTE , EMAIL_PACIENTE)VALUES (SEQ_ID_PACIENTE.NEXTVAL,?,?,?,?,?)";
-    	
+    	System.out.println(paciente.getDataNascimentoPaciente());
+    	System.out.println(paciente.getNomePaciente());
+
     
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            	Date dataRecebida = null;
+            	Date dataRecebida = Date.valueOf(paciente.getDataNascimentoPaciente());
             	java.sql.Date  dataInsert = null;
             	
             	dataRecebida = Date.valueOf(paciente.getDataNascimentoPaciente());                  	

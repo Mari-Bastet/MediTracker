@@ -9,11 +9,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.meditracker.dominio.Doenca;
+import br.com.meditracker.dominio.ImplDoenca;
 import br.com.meditracker.service.DoencaService;
 
 public class DoencaController {
 	
-	DoencaService doencaService = new DoencaService();
+	private ImplDoenca alunoDao;
+	
+	DoencaService doencaService = new DoencaService(alunoDao);
 	
 	@GET
 	@Path("/todos")

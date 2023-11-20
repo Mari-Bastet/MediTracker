@@ -36,9 +36,14 @@ public class TratamentoPaciente {
 	@JsonProperty
 	private int idtratMedPaciente;
 	
+	
+	@JsonProperty
+	private int staMedicamentoTomado;
+	
+	
 	public TratamentoPaciente(int idtratMedPaciente, Double quantidadeMedicamento,
 			LocalDate dataInicioTratamento, int idMedicamento, String nomeMedicamento, int idDoenca, String nomeDoenca,
-			int idPaciente, int tratamentoAtivo, LocalDate dataTerminoTratamento) {
+			int idPaciente, int tratamentoAtivo, LocalDate dataTerminoTratamento, int staMedicamentoTomado) {
 
 		this.idtratMedPaciente = idtratMedPaciente;
 		this.quantidadeMedicamento = quantidadeMedicamento;
@@ -50,6 +55,7 @@ public class TratamentoPaciente {
 		this.idPaciente = idPaciente;
 		this.tratamentoAtivo = tratamentoAtivo;
 		this.dataTerminoTratamento = dataTerminoTratamento;
+		this.staMedicamentoTomado = staMedicamentoTomado;
 	}
 	
 	public TratamentoPaciente() {}
@@ -115,9 +121,11 @@ public class TratamentoPaciente {
 		this.dataTerminoTratamento = dataTerminoTratamento;
 	}
 
+	public int getStaMedicamentoTomado() {
+		return staMedicamentoTomado;
+	}
 
-	
-	
-	
-	
+	public void setStaMedicamentoTomado(int staMedicamentoTomado) {
+		this.staMedicamentoTomado = staMedicamentoTomado;
+	}
 }

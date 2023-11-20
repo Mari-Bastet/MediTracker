@@ -50,7 +50,7 @@ public class PacienteController {
     public Response adicionaPaciente(Paciente paciente) {
         
         try {
-            
+            System.out.println(paciente.getDocumentoPaciente());
             pacienteService.insereNovoPaciente(paciente);
             //pacienteService.fechaConexao();
             

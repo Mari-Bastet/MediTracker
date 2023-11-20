@@ -60,17 +60,18 @@ public class TratamentoPacienteDAO {
 		
 		Date dataRecebida = Date.valueOf(dataRegistro);
 		
-		String sqlSelect = "select trat.ID_TRAT_MED_PACIENTE "
-				+ ",                QUANTIDADE_MEDICAMENTO "
-				+ ",                MEDI.NOME_MEDICAMENTO "
+		String sqlSelect = "select TRAT.ID_TRAT_MED_PACIENTE "
+				+ ",               QUANTIDADE_MEDICAMENTO "
+				+ ",               MEDI.NOME_MEDICAMENTO "
+				+ ",               REGI.STA_MEDICAMENTO_TOMADO"					
 				+ "from TB_MTC_TRAT_MED_PACIENTE TRAT "
 				+ ",    TB_MTC_PACIENTE  PACI "
 				+ ",    TB_MTC_REG_DIARIO_MEDICAMENTO REGI "
 				+ ",    TB_MTC_MED_DOSAGEM MEDO "
 				+ ",    TB_MTC_MEDICAMENTO MEDI "
-				+ "where PACI.documento_paciente                = ? "
-				+ "AND   PACI.ID_PACIENTE                = TRAT.ID_PACIENTE "
-				+ "and   REGI.id_trat_med_paciente(+)    = TRAT.id_trat_med_paciente "
+				+ "where PACI.documento_paciente         = ? "
+				+ "AND   PACI.ID_PACIENTE                 = TRAT.ID_PACIENTE "
+				+ "and   REGI.id_trat_med_paciente(+)     = TRAT.id_trat_med_paciente "
 				+ "and   REGI.data_registro_diario_med(+) = to_date('" + dataRecebida + "','yyyy-mm-dd') "
 				+ "and   TRAT.data_inicio_tratamento     <= sysdate "
 				+ "and   TRAT.tratamento_ativo = 1 "
@@ -92,6 +93,7 @@ public class TratamentoPacienteDAO {
 				tratPaciente.setQuantidadeMedicamento(rs.getDouble("QUANTIDADE_MEDICAMENTO"));
 				tratPaciente.setIdtratMedPaciente(rs.getInt("ID_TRAT_MED_PACIENTE"));
 				tratPaciente.setNomeMedicamento(rs.getString("NOME_MEDICAMENTO"));
+				tratPaciente.setStaMedicamentoTomado(rs.getInt("STA_MEDICAMENTO_TOMADO"));
 				
 				tratsPaciente.add(tratPaciente);
 			}
@@ -105,6 +107,7 @@ public class TratamentoPacienteDAO {
 
 	}
 	
+		
 	public void fecharConexao() {
 		try {
 			conn.close();

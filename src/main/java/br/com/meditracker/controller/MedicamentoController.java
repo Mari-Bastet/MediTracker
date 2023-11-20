@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
+import br.com.meditracker.dominio.ImplMedicamento;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.service.MedicamentoService;
 
@@ -16,8 +17,9 @@ import br.com.meditracker.service.MedicamentoService;
 public class MedicamentoController {
 
 
-	MedicamentoService medicamentoService = new MedicamentoService(); 
+	private ImplMedicamento medicamentoDAO; 
 	
+	MedicamentoService medicamentoService = new MedicamentoService(medicamentoDAO);
 	
 	@GET
 	@Path("/todos")

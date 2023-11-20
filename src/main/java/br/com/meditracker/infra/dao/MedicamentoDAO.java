@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.meditracker.dominio.ImplMedicamento;
 import br.com.meditracker.dominio.Medicamento;
 
-public class MedicamentoDAO {
+public class MedicamentoDAO implements ImplMedicamento {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 

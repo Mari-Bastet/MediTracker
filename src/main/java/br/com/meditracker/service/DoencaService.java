@@ -6,19 +6,27 @@ import br.com.meditracker.dominio.Doenca;
 import br.com.meditracker.dominio.ImplDoenca;
 import br.com.meditracker.infra.dao.DoencaDAO;
 
-public class DoencaService implements ImplDoenca {
+public class DoencaService {
 	
-	DoencaDAO doencaDAO = new DoencaDAO();
+	private ImplDoenca implDoenca;
+	
+	public DoencaService(ImplDoenca implDoenca) {
+		this.implDoenca = implDoenca;
+	}	
 
 	public ArrayList<Doenca> listaDoencas() {
 		
 		ArrayList<Doenca> doencas = new ArrayList<>();
 		
-		doencas = doencaDAO.listaDoencas();
-		doencaDAO.fecharConexao();
+		doencas = implDoenca.listaDoencas();
+		implDoenca.fecharConexao();
 
 		return doencas;
 		
 		
 	}
+
+
+
+
 }
