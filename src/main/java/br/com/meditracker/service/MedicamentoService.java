@@ -12,11 +12,14 @@ public class MedicamentoService {
 	private ImplMedicamento implMedicamento;
 	
 
+<<<<<<< HEAD
 	public MedicamentoService(ImplMedicamento implMedicamento) {
 		this.implMedicamento = implMedicamento;
 	}
 	
 
+=======
+>>>>>>> parent of 31ab256 (Ajuste nome de métodos)
 	public ArrayList<Medicamento> retornaMedicamentos(){
 		
 		ArrayList<Medicamento> medicamentos = new ArrayList<>();
