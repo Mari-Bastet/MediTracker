@@ -9,13 +9,15 @@ public class Paciente {
 	
 	 @JsonProperty
 	  private int idPaciente;  
-
+	 
+	  @JsonProperty
 	  private String nomePaciente;
 
 	  @JsonProperty 
 	  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
 	  private LocalDate dataNascimentoPaciente;
-
+	  
+	  @JsonProperty
 	  private String documentoPaciente ;
 
 	  @JsonProperty     

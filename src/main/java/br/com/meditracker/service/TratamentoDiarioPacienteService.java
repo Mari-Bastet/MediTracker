@@ -2,17 +2,27 @@ package br.com.meditracker.service;
 
 import java.time.LocalDate;
 
+import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
-import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
 
 public class TratamentoDiarioPacienteService {
 	
-	TratamentoDiarioPacienteDAO tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
+	
+	ImplTratamentoDiarioPaciente implTratDiaPaciente;
+	
+	
+	public TratamentoDiarioPacienteService(ImplTratamentoDiarioPaciente implTratDiaPaciente) {
+		this.implTratDiaPaciente = implTratDiaPaciente;
+	}	
+	
+	//TratamentoDiarioPacienteDAO tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
 	
 	public void AtualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
 		
-		tratDiaPacienteDAO.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
+		implTratDiaPaciente.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
 		
-	}	
+	}
+
+
 
 }

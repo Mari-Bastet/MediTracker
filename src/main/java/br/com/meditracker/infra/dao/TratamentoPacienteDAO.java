@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
 
-public class TratamentoPacienteDAO {
+public class TratamentoPacienteDAO implements ImplementaTratamentoPaciente{
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
@@ -71,7 +72,7 @@ public class TratamentoPacienteDAO {
 		String sqlSelect = "select TRAT.ID_TRAT_MED_PACIENTE "
 				+ ",               QUANTIDADE_MEDICAMENTO "
 				+ ",               MEDI.NOME_MEDICAMENTO "
-				+ ",               REGI.STA_MEDICAMENTO_TOMADO"					
+				+ ",               REGI.STA_MEDICAMENTO_TOMADO "					
 				+ "from TB_MTC_TRAT_MED_PACIENTE TRAT "
 				+ ",    TB_MTC_PACIENTE  PACI "
 				+ ",    TB_MTC_REG_DIARIO_MEDICAMENTO REGI "
@@ -84,7 +85,7 @@ public class TratamentoPacienteDAO {
 				+ "and   TRAT.data_inicio_tratamento     <= sysdate "
 				+ "and   TRAT.tratamento_ativo = 1 "
 				+ "and   TRAT.ID_MED_DOSAGEM = MEDO.ID_MED_DOSAGEM "
-				+ "and   MEDO.ID_MEDICAMENTO = MEDI.ID_MEDICAMENTO";
+				+ "and   MEDO.ID_MEDICAMENTO = MEDI.ID_MEDICAMENTO ";
 		
 		
 			
@@ -122,7 +123,9 @@ public class TratamentoPacienteDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-	}
+
 	
 
 	}
+	
+}

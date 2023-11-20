@@ -10,13 +10,25 @@ import javax.ws.rs.core.Response;
 
 import br.com.meditracker.dominio.Doenca;
 import br.com.meditracker.dominio.ImplDoenca;
+import br.com.meditracker.infra.dao.DoencaDAO;
 import br.com.meditracker.service.DoencaService;
 
+
+@Path("doenca")
 public class DoencaController {
 	
-	private ImplDoenca alunoDao;
+	private ImplDoenca doencaDAO;
+	private DoencaService doencaService;
 	
-	DoencaService doencaService = new DoencaService(alunoDao);
+	
+	public DoencaController() {
+		doencaDAO = new DoencaDAO();
+		doencaService = new DoencaService(doencaDAO);
+}
+	
+	
+	
+	
 	
 	@GET
 	@Path("/todos")

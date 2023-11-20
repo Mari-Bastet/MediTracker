@@ -10,14 +10,22 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import br.com.meditracker.dominio.ImplementaPaciente;
 import br.com.meditracker.dominio.Paciente;
+import br.com.meditracker.infra.dao.PacienteDAO;
 import br.com.meditracker.service.PacienteService;
 
 
 @Path("paciente")
 public class PacienteController {
 	
-	private PacienteService pacienteService = new PacienteService();
+	private ImplementaPaciente pacienteDAO;
+	private PacienteService pacienteService;
+	
+	public PacienteController() {
+		pacienteDAO = new PacienteDAO();
+		pacienteService  = new PacienteService(pacienteDAO);
+	} 
 	
     @GET
     @Path("/{DOCUMENTO_PACIENTE}")

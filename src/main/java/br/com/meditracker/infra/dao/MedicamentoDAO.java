@@ -17,10 +17,10 @@ public class MedicamentoDAO implements ImplMedicamento {
 	    
 	    ArrayList<Medicamento> medicamentos = new ArrayList<>();
 	    
-		String sqlSelect = "select medi.id_med_dosagem"
+		String sqlSelect = "select medo.id_med_dosagem"
 				+ ",               medi.nome_medicamento "
 				+ ",               medi.descricao_medicamento "
-				+ ",               medo.dosagem_medicamento "
+				//+ ",               medo.dosagem_medicamento "
 				+ "from tb_mtc_medicamento   medi "
 				+ ",    tb_mtc_forma_dosagem ford "
 				+ ",    tb_mtc_med_dosagem   medo "
@@ -41,7 +41,6 @@ public class MedicamentoDAO implements ImplMedicamento {
 				medicamento.setIdMedicamento(rs.getInt("ID_MED_DOSAGEM"));
 				medicamento.setDescricaoMedicamento(rs.getString("DESCRICAO_MEDICAMENTO"));
 				medicamento.setNomeMedicamento(rs.getString("NOME_MEDICAMENTO"));
-				medicamento.setDosagemMedicamento(rs.getDouble("DOSAGEM_MEDICAMENTO"));
 				
 				medicamentos.add(medicamento);
 		}

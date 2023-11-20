@@ -13,8 +13,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
+import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
 import br.com.meditracker.infra.dao.TratamentoPacienteDAO;
 import br.com.meditracker.service.TratamentoPacienteService;
 
@@ -22,7 +25,20 @@ import br.com.meditracker.service.TratamentoPacienteService;
 public class TratamentoPacienteController {
 	
 	//TratamentoPacienteService tratamentoDAO = new TratamentoPacienteService();
-	TratamentoPacienteService tratDAO = new TratamentoPacienteService();
+	TratamentoPacienteService tratPaciService;
+	ImplementaTratamentoPaciente implTratPaciente;
+	ImplTratamentoDiarioPaciente implTratDiaPaciente;
+	
+	public TratamentoPacienteController() {
+		implTratPaciente = new TratamentoPacienteDAO();
+		implTratDiaPaciente = new TratamentoDiarioPacienteDAO();
+		
+		tratPaciService = new TratamentoPacienteService(implTratPaciente,implTratDiaPaciente);
+
+		
+	}
+	
+	
 	
 	@GET
 	@Path("/{DOCUMENTO_PACIENTE}")
@@ -34,7 +50,7 @@ public class TratamentoPacienteController {
 		
 		try {
 	        LocalDate data = LocalDate.parse(dataRegistro);
-			ArrayList<TratamentoPaciente> medicamentos = tratDAO.listaTratamentoDiarioPaciente(documentoPaciente, data);
+			ArrayList<TratamentoPaciente> medicamentos = tratPaciService.listaTratamentoDiarioPaciente(documentoPaciente, data);
 			Status status = null;
 			
 			if(medicamentos.isEmpty()) {
@@ -68,7 +84,7 @@ public class TratamentoPacienteController {
         
         try {
         	
-        	tratDAO.insereNovoTratamentoPaciente(tratamentoPaciente,documentoPaciente);
+        	tratPaciService.insereNovoTratamentoPaciente(tratamentoPaciente,documentoPaciente);
         	
             //pacienteService.fechaConexao();
             
