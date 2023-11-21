@@ -32,14 +32,10 @@ public class TratamentoPacienteController {
 	public TratamentoPacienteController() {
 		implTratPaciente = new TratamentoPacienteDAO();
 		implTratDiaPaciente = new TratamentoDiarioPacienteDAO();
-		
 		tratPaciService = new TratamentoPacienteService(implTratPaciente,implTratDiaPaciente);
-
-		
 	}
 	
-	
-	
+
 	@GET
 	@Path("/{DOCUMENTO_PACIENTE}")
     @Produces(MediaType.APPLICATION_JSON)

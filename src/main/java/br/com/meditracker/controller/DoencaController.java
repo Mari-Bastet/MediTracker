@@ -24,11 +24,7 @@ public class DoencaController {
 	public DoencaController() {
 		doencaDAO = new DoencaDAO();
 		doencaService = new DoencaService(doencaDAO);
-}
-	
-	
-	
-	
+	}
 	
 	@GET
 	@Path("/todos")

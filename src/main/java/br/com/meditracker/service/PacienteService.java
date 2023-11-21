@@ -13,8 +13,6 @@ public class PacienteService {
 		this.implPaciente = implPaciente;
 	}
 	
-	
-
 	public Paciente realizaLoginPaciente(String documentoPaciente, String senhaPaciente){
 		Paciente paciente = implPaciente.realizaLogin(documentoPaciente, senhaPaciente);
 		implPaciente.fecharConexao();

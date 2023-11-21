@@ -45,7 +45,6 @@ public class TratamentoPacienteService {
 		for (TratamentoPaciente trat: tratamentoDiario) {
 
 			existeRegistro = implTratDiaPaciente.verificaExistenciaRegistroDiario(trat.getIdtratMedPaciente(), dataRegistro, documentoPaciente);
-			System.out.println(existeRegistro);
 			
 			if(existeRegistro == false) {
 				tratDiaPaciente = new TratamentoDiarioPaciente();

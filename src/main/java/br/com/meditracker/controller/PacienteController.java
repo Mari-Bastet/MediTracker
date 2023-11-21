@@ -58,9 +58,7 @@ public class PacienteController {
     public Response adicionarPaciente(Paciente paciente) {
         
         try {
-            System.out.println(paciente.getDocumentoPaciente());
             pacienteService.insereNovoPaciente(paciente);
-            //pacienteService.fechaConexao();
             
             return Response.status(Response.Status.CREATED).build();
             
