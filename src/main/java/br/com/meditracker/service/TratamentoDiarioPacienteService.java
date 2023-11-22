@@ -8,17 +8,17 @@ import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 public class TratamentoDiarioPacienteService {
 	
 	
-	RepositorioTratamentoDiarioPaciente implTratDiaPaciente;
+	RepositorioTratamentoDiarioPaciente repositorioTratDiaPaciente;
 	
 	
-	public TratamentoDiarioPacienteService(RepositorioTratamentoDiarioPaciente implTratDiaPaciente) {
-		this.implTratDiaPaciente = implTratDiaPaciente;
+	public TratamentoDiarioPacienteService(RepositorioTratamentoDiarioPaciente repositorioTratDiaPaciente) {
+		this.repositorioTratDiaPaciente = repositorioTratDiaPaciente;
 	}	
 	
 	
 	public void AtualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
 		
-		implTratDiaPaciente.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
+		repositorioTratDiaPaciente.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
 		
 	}
 

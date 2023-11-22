@@ -73,8 +73,7 @@ public class TratamentoPacienteDAO implements RepositorioTratamentoPaciente{
 				+ "and   TRAT.tratamento_ativo = 1 "
 				+ "and   TRAT.ID_MED_DOSAGEM = MEDO.ID_MED_DOSAGEM "
 				+ "and   MEDO.ID_MEDICAMENTO = MEDI.ID_MEDICAMENTO ";
-		
-		
+				
 			
 		try (PreparedStatement pstmt = conn.prepareStatement(sqlSelect)){
 

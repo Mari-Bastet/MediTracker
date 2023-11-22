@@ -43,8 +43,6 @@ public class PacienteDAO implements RepositorioPaciente{
     public void cadastraPaciente(Paciente paciente) {
     	
 		String sql = "INSERT INTO TB_MTC_PACIENTE (ID_PACIENTE , NOME_PACIENTE , DATA_NASCIMENTO_PACIENTE , DOCUMENTO_PACIENTE , SENHA_PACIENTE , EMAIL_PACIENTE)VALUES (SEQ_ID_PACIENTE.NEXTVAL,?,?,?,?,?)";
-    	System.out.println(paciente.getDataNascimentoPaciente());
-    	System.out.println(paciente.getNomePaciente());
 
     
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -97,11 +95,7 @@ public class PacienteDAO implements RepositorioPaciente{
             	
               	LocalDate dataSelect = dataNascimentoPaciente.toLocalDate();
             	
-            	
-      
-                //Date dataNascimentoPaciente = rs.getDate("DATA_NASCIMENTO_PACIENTE");
-                //LocalDate dataNascimentoPaciente = (dataNascimentoConv != null) ? dataNascimentoConv.toLocalDate() : null;
-                String emailPaciente = rs.getString("EMAIL_PACIENTE");
+            	String emailPaciente = rs.getString("EMAIL_PACIENTE");
                 
                 paciente = new Paciente(idPaciente,nomePaciente,dataSelect,documentoPaciente,senhaPaciente,emailPaciente);
 

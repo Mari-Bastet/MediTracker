@@ -32,9 +32,7 @@ public class TratamentoDiarioPacienteDAO implements RepositorioTratamentoDiarioP
 	    		if( staRemedioTomado == 0) {
 	    			novoEstado = 1;
 	    			}
-	    		
-	    		System.out.println(novoEstado);
-	    		
+	    			    		
 	    		pstmt.setInt(1, novoEstado);
 	    		pstmt.setInt(2, tratDiaPaciente.getIdTratMedPaciente());
 	    		
@@ -70,13 +68,6 @@ public class TratamentoDiarioPacienteDAO implements RepositorioTratamentoDiarioP
             pstmt.setInt(3, 0);
             pstmt.execute();
             pstmt.close();
-
-        	/*if (paciente.getData_nascimento_paciente() != null) {
-          	data_recebida = paciente.getData_nascimento_paciente();
-          	dataInsert = new java.sql.Date(data_recebida.getTime());
-
-        	}*/
-          	
  
             
         } catch (SQLException e) {
@@ -136,8 +127,6 @@ public class TratamentoDiarioPacienteDAO implements RepositorioTratamentoDiarioP
 
 	}
 	
-	
-	
 	public int verificaStaRemedio(TratamentoDiarioPaciente tratDiaPaciente, LocalDate dataRegistro) {
 		
     	Date dataRecebida = Date.valueOf(dataRegistro);
@@ -161,9 +150,7 @@ public class TratamentoDiarioPacienteDAO implements RepositorioTratamentoDiarioP
     			retorno = rs.getInt("STA_MEDICAMENTO_TOMADO");
     			
     		}
-    		
-    		
-    		
+    			
     		return retorno;
 
     	}catch(SQLException e) {
