@@ -18,7 +18,7 @@ public class Paciente {
 	  private LocalDate dataNascimentoPaciente;
 	  
 	  @JsonProperty
-	  private String documentoPaciente ;
+	  String documentoPaciente ;
 
 	  @JsonProperty     
 	  private String senhaPaciente;
@@ -61,6 +61,10 @@ public class Paciente {
 
 		public String getEmailPaciente() {
 			return emailPaciente;
+		}
+
+		public void setDocumentoPaciente(String documentoPaciente) {
+			this.documentoPaciente = documentoPaciente;
 		}
 		
 	
