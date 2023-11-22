@@ -21,7 +21,6 @@ public class TratamentoDiarioPaciente {
 	
 	public TratamentoDiarioPaciente(int idRegistroDiarioMed, LocalDate dataRegistroDiarioMed, int idTratMedPaciente,
 			int staMedicamentoTomado) {
-		super();
 		this.idRegistroDiarioMed = idRegistroDiarioMed;
 		this.dataRegistroDiarioMed = dataRegistroDiarioMed;
 		this.idTratMedPaciente = idTratMedPaciente;
@@ -53,10 +52,6 @@ public class TratamentoDiarioPaciente {
 
 	public void setIdTratMedPaciente(int idTratMedPaciente) {
 		this.idTratMedPaciente = idTratMedPaciente;
-	}
-
-	public int getStaMedicamentoTomado() {
-		return staMedicamentoTomado;
 	}
 
 	public void setStaMedicamentoTomado(int staMedicamentoTomado) {

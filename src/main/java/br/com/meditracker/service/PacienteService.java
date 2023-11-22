@@ -1,22 +1,29 @@
 package br.com.meditracker.service;
 
+import br.com.meditracker.dominio.RepositorioPacientes;
+import br.com.meditracker.dominio.RepositorioRelatorio;
 import br.com.meditracker.dominio.Paciente;
-import br.com.meditracker.infra.dao.PacienteDAO;
 
 public class PacienteService {
 	
-	private PacienteDAO pacienteDAO = new PacienteDAO();
 	
+	private RepositorioPacientes repositorioPacientes;
 
+	public PacienteService(RepositorioPacientes implPaciente,RepositorioRelatorio repositorioRelatorio) {
+		this.repositorioPacientes = implPaciente;
+	}
+	
 	public Paciente realizaLoginPaciente(String documentoPaciente, String senhaPaciente){
-		Paciente paciente = pacienteDAO.realizaLogin(documentoPaciente, senhaPaciente);
-		pacienteDAO.fecharConexao();
+		Paciente paciente = repositorioPacientes.realizaLogin(documentoPaciente, senhaPaciente);
+		repositorioPacientes.fecharConexao();
 		return paciente;
 	}
 	
 	public void insereNovoPaciente(Paciente paciente) {
-		pacienteDAO.cadastraPaciente(paciente);
-		pacienteDAO.fecharConexao();
+		repositorioPacientes.cadastraPaciente(paciente);
+		repositorioPacientes.fecharConexao();
 
 	}
+	
+
 }

@@ -9,16 +9,16 @@ public class Paciente {
 	
 	 @JsonProperty
 	  private int idPaciente;  
-
-	 @JsonProperty
+	 
+	  @JsonProperty
 	  private String nomePaciente;
 
 	  @JsonProperty 
 	  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "UTC")
 	  private LocalDate dataNascimentoPaciente;
-
-	  @JsonProperty("documentoPaciente")
-	  private String documentoPaciente ;
+	  
+	  @JsonProperty
+	  String documentoPaciente ;
 
 	  @JsonProperty     
 	  private String senhaPaciente;
@@ -42,7 +42,6 @@ public class Paciente {
 	  public int getIdPaciente() {
 			return idPaciente;
 		}
-
 		public String getNomePaciente() {
 			return nomePaciente;
 		}
@@ -55,7 +54,7 @@ public class Paciente {
 		public String getDocumentoPaciente() {
 			return documentoPaciente;
 		}
-
+		
 		public String getSenhaPaciente() {
 			return senhaPaciente;
 		}
@@ -64,5 +63,9 @@ public class Paciente {
 			return emailPaciente;
 		}
 
-
+		public void setDocumentoPaciente(String documentoPaciente) {
+			this.documentoPaciente = documentoPaciente;
+		}
+		
+	
 }

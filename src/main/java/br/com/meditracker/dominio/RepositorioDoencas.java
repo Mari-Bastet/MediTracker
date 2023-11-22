@@ -2,10 +2,9 @@ package br.com.meditracker.dominio;
 
 import java.util.ArrayList;
 
-public interface ImplMedicamento {
+public interface RepositorioDoencas {
 	
-	 ArrayList<Medicamento> listaMedicamentos();
+	public ArrayList<Doenca> listaDoencas();
 	
 	void fecharConexao();
-
 }

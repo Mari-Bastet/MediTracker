@@ -13,17 +13,28 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
+import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
 import br.com.meditracker.infra.dao.TratamentoPacienteDAO;
 import br.com.meditracker.service.TratamentoPacienteService;
 
 @Path("tratamentoPaciente")
 public class TratamentoPacienteController {
 	
-	//TratamentoPacienteService tratamentoDAO = new TratamentoPacienteService();
-	TratamentoPacienteService tratDAO = new TratamentoPacienteService();
+	TratamentoPacienteService tratPaciService;
+	RepositorioTratamentoPaciente tratPacienteDAO;
+	RepositorioTratamentoDiarioPaciente tratDiaPacienteDAO;
 	
+	public TratamentoPacienteController() {
+		tratPacienteDAO = new TratamentoPacienteDAO();
+		tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
+		tratPaciService = new TratamentoPacienteService(tratPacienteDAO,tratDiaPacienteDAO);
+	}
+	
+
 	@GET
 	@Path("/{DOCUMENTO_PACIENTE}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,7 +45,7 @@ public class TratamentoPacienteController {
 		
 		try {
 	        LocalDate data = LocalDate.parse(dataRegistro);
-			ArrayList<TratamentoPaciente> medicamentos = tratDAO.listaTratamentoDiarioPaciente(documentoPaciente, data);
+			ArrayList<TratamentoPaciente> medicamentos = tratPaciService.listaTratamentoDiarioPaciente(documentoPaciente, data);
 			Status status = null;
 			
 			if(medicamentos.isEmpty()) {
@@ -61,14 +72,14 @@ public class TratamentoPacienteController {
 
 	@POST
 	@Path("/{DOCUMENTO_PACIENTE}")
-    public Response adicionaTratamento(TratamentoPaciente tratamentoPaciente
+    public Response adicionarTratamento(TratamentoPaciente tratamentoPaciente
     									,@PathParam("DOCUMENTO_PACIENTE")String documentoPaciente) {
     	tratamentoPaciente.getIdtratMedPaciente();
 
         
         try {
         	
-        	tratDAO.insereNovoTratamentoPaciente(tratamentoPaciente,documentoPaciente);
+        	tratPaciService.insereNovoTratamentoPaciente(tratamentoPaciente,documentoPaciente);
         	
             //pacienteService.fechaConexao();
             

@@ -9,27 +9,33 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
-import br.com.meditracker.dominio.ImplMedicamento;
+import br.com.meditracker.dominio.RepositorioMedicamentos;
 import br.com.meditracker.dominio.Medicamento;
+import br.com.meditracker.infra.dao.MedicamentoDAO;
 import br.com.meditracker.service.MedicamentoService;
 
 @Path("medicamento")
 public class MedicamentoController {
 
+	private RepositorioMedicamentos medicamentoDAO; 
+	private MedicamentoService medicamentoService;
 
-	private ImplMedicamento medicamentoDAO; 
-	
-	MedicamentoService medicamentoService = new MedicamentoService(medicamentoDAO);
+	public MedicamentoController() {
+		 medicamentoDAO = new 	MedicamentoDAO();
+		 medicamentoService = new MedicamentoService(medicamentoDAO);
+
+	}
 	
 	@GET
 	@Path("/todos")
     @Produces(MediaType.APPLICATION_JSON)
 	public Response listaMedicamentos() {
 		
+		System.out.println(medicamentoDAO);
 		Response.Status status = null;
 		
 		try {
-			ArrayList<Medicamento> medicamentos = medicamentoService.listaMedicamentos();
+			ArrayList<Medicamento> medicamentos = medicamentoService.retornaMedicamentos();
 			if(medicamentos.isEmpty()) {
 				
 				status = Response.Status.NOT_FOUND;

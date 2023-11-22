@@ -9,19 +9,27 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.meditracker.dominio.Doenca;
-import br.com.meditracker.dominio.ImplDoenca;
+import br.com.meditracker.dominio.RepositorioDoencas;
+import br.com.meditracker.infra.dao.DoencaDAO;
 import br.com.meditracker.service.DoencaService;
 
+
+@Path("doenca")
 public class DoencaController {
 	
-	private ImplDoenca alunoDao;
+	private RepositorioDoencas doencaDAO;
+	private DoencaService doencaService;
 	
-	DoencaService doencaService = new DoencaService(alunoDao);
+	
+	public DoencaController() {
+		doencaDAO = new DoencaDAO();
+		doencaService = new DoencaService(doencaDAO);
+	}
 	
 	@GET
 	@Path("/todos")
     @Produces(MediaType.APPLICATION_JSON)
-	public Response listaDoencas() {
+	public Response listaMedicamentos() {
 		
 		Response.Status status = null;
 		
