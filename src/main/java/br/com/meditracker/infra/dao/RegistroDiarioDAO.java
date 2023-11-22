@@ -24,12 +24,6 @@ public class RegistroDiarioDAO {
                 java.sql.Date dataInsert = new java.sql.Date(dataAtual.getTime());
                 
 
-            	/*if (paciente.getData_nascimento_paciente() != null) {
-              	data_recebida = paciente.getData_nascimento_paciente();
-              	dataInsert = new java.sql.Date(data_recebida.getTime());
-
-            	}*/
-              	
                 pstmt.setString(1, registroDiario.getDescricao_registro());
                 pstmt.setInt(2, pacienteDAO.retornaIdPaciente(documento_paciente));
                 pstmt.setInt(3, registroDiario.getHumor());
@@ -55,11 +49,6 @@ public class RegistroDiarioDAO {
             java.sql.Date dataInsert = new java.sql.Date(dataAtual.getTime());
             
 
-        	/*if (paciente.getData_nascimento_paciente() != null) {
-          	data_recebida = paciente.getData_nascimento_paciente();
-          	dataInsert = new java.sql.Date(data_recebida.getTime());
-
-        	}*/
           	
             pstmt.setString(1, registroDiario.getDescricao_registro());
             pstmt.setInt(2, pacienteDAO.retornaIdPaciente(documento_paciente));

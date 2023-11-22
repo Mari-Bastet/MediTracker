@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
 
-public class TratamentoPacienteDAO implements ImplementaTratamentoPaciente{
+public class TratamentoPacienteDAO implements RepositorioTratamentoPaciente{
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
@@ -31,25 +31,12 @@ public class TratamentoPacienteDAO implements ImplementaTratamentoPaciente{
             
             
             dataRecebida = Date.valueOf(tratamentoPaciente.getDataInicioTratamento());   
-            
             pstmt.setDouble(1, tratamentoPaciente.getQuantidadeMedicamento());
-            System.out.println("entrou1");
-
             pstmt.setDate(2,dataRecebida);
-            System.out.println("entrou2");
-
             pstmt.setInt(3, tratamentoPaciente.getIdMedicamento());
-            
-            System.out.println("entrou3");
-
             pstmt.setInt(4, tratamentoPaciente.getIdDoenca());
-            
-            System.out.println("entrou4");
-
             pstmt.setInt(5,pacienteDAO.retornaIdPaciente(documentoPaciente));
             
-            System.out.println("entrou5");
-
 
             pstmt.execute();
             pstmt.close();

@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 
-public class TratamentoDiarioPacienteDAO implements ImplTratamentoDiarioPaciente{
+public class TratamentoDiarioPacienteDAO implements RepositorioTratamentoDiarioPaciente{
 	
     Connection conn = new ConnectionFactory().criaConexao();
 

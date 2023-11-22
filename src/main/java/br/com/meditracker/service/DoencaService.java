@@ -3,23 +3,23 @@ package br.com.meditracker.service;
 import java.util.ArrayList;
 
 import br.com.meditracker.dominio.Doenca;
-import br.com.meditracker.dominio.ImplDoenca;
+import br.com.meditracker.dominio.RepositorioDoenca;
 import br.com.meditracker.infra.dao.DoencaDAO;
 
 public class DoencaService {
 	
-	private ImplDoenca implDoenca;
+	private RepositorioDoenca repositorioDoenca;
 	
-	public DoencaService(ImplDoenca implDoenca) {
-		this.implDoenca = implDoenca;
+	public DoencaService(RepositorioDoenca repositorioDoenca) {
+		this.repositorioDoenca = repositorioDoenca;
 	}	
 
 	public ArrayList<Doenca> listaDoencas() {
 		
 		ArrayList<Doenca> doencas = new ArrayList<>();
 		
-		doencas = implDoenca.listaDoencas();
-		implDoenca.fecharConexao();
+		doencas = repositorioDoenca.listaDoencas();
+		repositorioDoenca.fecharConexao();
 
 		return doencas;
 		

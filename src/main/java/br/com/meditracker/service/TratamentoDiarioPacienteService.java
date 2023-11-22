@@ -2,20 +2,19 @@ package br.com.meditracker.service;
 
 import java.time.LocalDate;
 
-import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 
 public class TratamentoDiarioPacienteService {
 	
 	
-	ImplTratamentoDiarioPaciente implTratDiaPaciente;
+	RepositorioTratamentoDiarioPaciente implTratDiaPaciente;
 	
 	
-	public TratamentoDiarioPacienteService(ImplTratamentoDiarioPaciente implTratDiaPaciente) {
+	public TratamentoDiarioPacienteService(RepositorioTratamentoDiarioPaciente implTratDiaPaciente) {
 		this.implTratDiaPaciente = implTratDiaPaciente;
 	}	
 	
-	//TratamentoDiarioPacienteDAO tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
 	
 	public void AtualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
 		

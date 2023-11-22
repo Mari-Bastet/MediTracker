@@ -2,17 +2,17 @@ package br.com.meditracker.service;
 
 import java.util.ArrayList;
 
-import br.com.meditracker.dominio.ImplMedicamento;
+import br.com.meditracker.dominio.RepositorioMedicamento;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.infra.dao.MedicamentoDAO;
 
 public class MedicamentoService {
 	
 	
-	private ImplMedicamento implMedicamento;
+	private RepositorioMedicamento repositorioMedicamento;
 	
-	public MedicamentoService(ImplMedicamento implMedicamento) {
-		this.implMedicamento = implMedicamento;
+	public MedicamentoService(RepositorioMedicamento repositorioMedicamento) {
+		this.repositorioMedicamento = repositorioMedicamento;
 	}
 	
 
@@ -21,8 +21,8 @@ public class MedicamentoService {
 		
 		ArrayList<Medicamento> medicamentos = new ArrayList<>();
 		
-		medicamentos = implMedicamento.listaMedicamentos();
-		implMedicamento.fecharConexao();
+		medicamentos = repositorioMedicamento.listaMedicamentos();
+		repositorioMedicamento.fecharConexao();
 
 		return medicamentos;
 		

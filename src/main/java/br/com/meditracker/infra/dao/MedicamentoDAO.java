@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.meditracker.dominio.ImplMedicamento;
+import br.com.meditracker.dominio.RepositorioMedicamento;
 import br.com.meditracker.dominio.Medicamento;
 
-public class MedicamentoDAO implements ImplMedicamento {
+public class MedicamentoDAO implements RepositorioMedicamento {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
@@ -20,7 +20,6 @@ public class MedicamentoDAO implements ImplMedicamento {
 		String sqlSelect = "select medo.id_med_dosagem"
 				+ ",               medi.nome_medicamento "
 				+ ",               medi.descricao_medicamento "
-				//+ ",               medo.dosagem_medicamento "
 				+ "from tb_mtc_medicamento   medi "
 				+ ",    tb_mtc_forma_dosagem ford "
 				+ ",    tb_mtc_med_dosagem   medo "
@@ -30,7 +29,6 @@ public class MedicamentoDAO implements ImplMedicamento {
 		
 		try  {
 			
-			System.out.println(sqlSelect);
 			PreparedStatement pstmt = conn.prepareStatement(sqlSelect);
 			
 			ResultSet rs = pstmt.executeQuery();

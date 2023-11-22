@@ -3,8 +3,8 @@ package br.com.meditracker.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
-import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoPaciente;
 import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
@@ -12,23 +12,23 @@ import br.com.meditracker.infra.dao.TratamentoPacienteDAO;
 
 public class TratamentoPacienteService {
 		
-		ImplementaTratamentoPaciente implTratPaciente;  
-		ImplTratamentoDiarioPaciente implTratDiaPaciente;
+		RepositorioTratamentoPaciente repositorioTratPaciente;  
+		RepositorioTratamentoDiarioPaciente repositorioTratDiaPaciente;
 		
 		private TratamentoDiarioPaciente tratDiaPaciente;
 
 		
 
-		public TratamentoPacienteService(ImplementaTratamentoPaciente implTratPaciente,
-				ImplTratamentoDiarioPaciente implTratDiaPaciente) {
-			this.implTratPaciente = implTratPaciente;
-			this.implTratDiaPaciente = implTratDiaPaciente;
+		public TratamentoPacienteService(RepositorioTratamentoPaciente repositorioTratPaciente,
+				RepositorioTratamentoDiarioPaciente repositorioTratDiaPaciente) {
+			this.repositorioTratPaciente = repositorioTratPaciente;
+			this.repositorioTratDiaPaciente = repositorioTratDiaPaciente;
 		}
 		
 
 	public void insereNovoTratamentoPaciente(TratamentoPaciente tratamentoPaciente, String documentoPaciente) {
 		
-		implTratPaciente.insereTratamentoPaciente(tratamentoPaciente, documentoPaciente);
+		repositorioTratPaciente.insereTratamentoPaciente(tratamentoPaciente, documentoPaciente);
 		
 	}
 	
@@ -39,12 +39,12 @@ public class TratamentoPacienteService {
 		ArrayList<TratamentoPaciente> tratamentoDiario = new ArrayList<>();
 		
 		
-		tratamentoDiario = implTratPaciente.listaTratamentosDoDia(documentoPaciente,dataRegistro);
+		tratamentoDiario = repositorioTratPaciente.listaTratamentosDoDia(documentoPaciente,dataRegistro);
 		
 		
 		for (TratamentoPaciente trat: tratamentoDiario) {
 
-			existeRegistro = implTratDiaPaciente.verificaExistenciaRegistroDiario(trat.getIdtratMedPaciente(), dataRegistro, documentoPaciente);
+			existeRegistro = repositorioTratDiaPaciente.verificaExistenciaRegistroDiario(trat.getIdtratMedPaciente(), dataRegistro, documentoPaciente);
 			System.out.println(existeRegistro);
 			
 			if(existeRegistro == false) {
@@ -53,11 +53,11 @@ public class TratamentoPacienteService {
 				tratDiaPaciente.setIdTratMedPaciente(trat.getIdtratMedPaciente());
 				tratDiaPaciente.setStaMedicamentoTomado(0);
 				
-				implTratDiaPaciente.insereRegistroDiarioTratamento(tratDiaPaciente);
+				repositorioTratDiaPaciente.insereRegistroDiarioTratamento(tratDiaPaciente);
 			}
 			
 		}
-		implTratPaciente.fecharConexao();
+		repositorioTratPaciente.fecharConexao();
 		
 		
 		return tratamentoDiario;

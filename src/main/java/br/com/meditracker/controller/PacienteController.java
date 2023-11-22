@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.com.meditracker.dominio.ImplementaPaciente;
+import br.com.meditracker.dominio.RepositorioPaciente;
 import br.com.meditracker.dominio.Paciente;
 import br.com.meditracker.infra.dao.PacienteDAO;
 import br.com.meditracker.service.PacienteService;
@@ -19,7 +19,7 @@ import br.com.meditracker.service.PacienteService;
 @Path("paciente")
 public class PacienteController {
 	
-	private ImplementaPaciente pacienteDAO;
+	private RepositorioPaciente pacienteDAO;
 	private PacienteService pacienteService;
 	
 	public PacienteController() {

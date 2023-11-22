@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import br.com.meditracker.dominio.ImplementaPaciente;
+import br.com.meditracker.dominio.RepositorioPaciente;
 import br.com.meditracker.dominio.Paciente;
 import br.com.meditracker.infra.*;
 
 import java.sql.ResultSet;
 
-public class PacienteDAO implements ImplementaPaciente{
+public class PacienteDAO implements RepositorioPaciente{
     Connection conn = new ConnectionFactory().criaConexao();
     
     

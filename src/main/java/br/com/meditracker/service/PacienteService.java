@@ -1,29 +1,29 @@
 package br.com.meditracker.service;
 
-import br.com.meditracker.dominio.ImplementaPaciente;
+import br.com.meditracker.dominio.RepositorioPaciente;
 import br.com.meditracker.dominio.Paciente;
 import br.com.meditracker.infra.dao.PacienteDAO;
 
 public class PacienteService {
 	
 	
-	private ImplementaPaciente implPaciente;
+	private RepositorioPaciente repositorioPaciente;
 
-	public PacienteService(ImplementaPaciente implPaciente) {
-		this.implPaciente = implPaciente;
+	public PacienteService(RepositorioPaciente repositorioPaciente) {
+		this.repositorioPaciente = repositorioPaciente;
 	}
 	
 	
 
 	public Paciente realizaLoginPaciente(String documentoPaciente, String senhaPaciente){
-		Paciente paciente = implPaciente.realizaLogin(documentoPaciente, senhaPaciente);
-		implPaciente.fecharConexao();
+		Paciente paciente = repositorioPaciente.realizaLogin(documentoPaciente, senhaPaciente);
+		repositorioPaciente.fecharConexao();
 		return paciente;
 	}
 	
 	public void insereNovoPaciente(Paciente paciente) {
-		implPaciente.cadastraPaciente(paciente);
-		implPaciente.fecharConexao();
+		repositorioPaciente.cadastraPaciente(paciente);
+		repositorioPaciente.fecharConexao();
 
 	}
 

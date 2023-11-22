@@ -2,7 +2,7 @@ package br.com.meditracker.dominio;
 
 import java.time.LocalDate;
 
-public interface ImplTratamentoDiarioPaciente {
+public interface RepositorioTratamentoDiarioPaciente {
 	
 	public void atualizaRegistroDiarioMed(TratamentoDiarioPaciente tratDiaPaciente, LocalDate dataRegistro);
 	

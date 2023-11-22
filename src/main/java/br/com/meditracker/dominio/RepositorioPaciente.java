@@ -1,6 +1,6 @@
 package br.com.meditracker.dominio;
 
-public interface ImplementaPaciente {
+public interface RepositorioPaciente {
 	
 	 Paciente realizaLogin(String documento_paciente, String senha_paciente);
 	
