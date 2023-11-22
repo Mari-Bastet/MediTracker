@@ -7,8 +7,7 @@ import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
 import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoPaciente;
-import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
-import br.com.meditracker.infra.dao.TratamentoPacienteDAO;
+
 
 public class TratamentoPacienteService {
 		
