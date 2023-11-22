@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
-import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
 import br.com.meditracker.infra.dao.TratamentoDiarioPacienteDAO;
@@ -24,15 +24,14 @@ import br.com.meditracker.service.TratamentoPacienteService;
 @Path("tratamentoPaciente")
 public class TratamentoPacienteController {
 	
-	//TratamentoPacienteService tratamentoDAO = new TratamentoPacienteService();
 	TratamentoPacienteService tratPaciService;
-	ImplementaTratamentoPaciente implTratPaciente;
-	ImplTratamentoDiarioPaciente implTratDiaPaciente;
+	RepositorioTratamentoPaciente tratPacienteDAO;
+	RepositorioTratamentoDiarioPaciente tratDiaPacienteDAO;
 	
 	public TratamentoPacienteController() {
-		implTratPaciente = new TratamentoPacienteDAO();
-		implTratDiaPaciente = new TratamentoDiarioPacienteDAO();
-		tratPaciService = new TratamentoPacienteService(implTratPaciente,implTratDiaPaciente);
+		tratPacienteDAO = new TratamentoPacienteDAO();
+		tratDiaPacienteDAO = new TratamentoDiarioPacienteDAO();
+		tratPaciService = new TratamentoPacienteService(tratPacienteDAO,tratDiaPacienteDAO);
 	}
 	
 

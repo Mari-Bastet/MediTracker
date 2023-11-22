@@ -42,17 +42,8 @@ public class Paciente {
 	  public int getIdPaciente() {
 			return idPaciente;
 		}
-
-		public void setIdPaciente(int idPaciente) {
-			this.idPaciente = idPaciente;
-		}
-
 		public String getNomePaciente() {
 			return nomePaciente;
-		}
-
-		public void setNomePaciente(String nomePaciente) {
-			this.nomePaciente = nomePaciente;
 		}
 
 		public LocalDate getDataNascimentoPaciente() {
@@ -60,31 +51,17 @@ public class Paciente {
 	        
 		}
 
-		public void setDataNascimentoPaciente(LocalDate dataNascimentoPaciente) {
-			this.dataNascimentoPaciente = dataNascimentoPaciente;
-		}
-
 		public String getDocumentoPaciente() {
 			return documentoPaciente;
 		}
-
-		public void setDocumentoPaciente(String documentoPaciente) {
-			this.documentoPaciente = documentoPaciente;
-		}
-
+		
 		public String getSenhaPaciente() {
 			return senhaPaciente;
-		}
-
-		public void setSenhaPaciente(String senhaPaciente) {
-			this.senhaPaciente = senhaPaciente;
 		}
 
 		public String getEmailPaciente() {
 			return emailPaciente;
 		}
-
-		public void setEmailPaciente(String emailPaciente) {
-			this.emailPaciente = emailPaciente;
-		}
+		
+	
 }

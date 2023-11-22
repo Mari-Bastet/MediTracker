@@ -8,49 +8,39 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import br.com.meditracker.dominio.ImplementaTratamentoPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoPaciente;
 import br.com.meditracker.dominio.Medicamento;
 import br.com.meditracker.dominio.TratamentoPaciente;
 
-public class TratamentoPacienteDAO implements ImplementaTratamentoPaciente{
+public class TratamentoPacienteDAO implements RepositorioTratamentoPaciente{
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
 	public void insereTratamentoPaciente(TratamentoPaciente tratamentoPaciente, String documentoPaciente) {
 		
-		String sqlInsert = "insert into TB_MTC_TRAT_MED_PACIENTE (id_trat_med_paciente,quantidade_medicamento,data_inicio_tratamento,id_med_dosagem,id_doenca,id_paciente,tratamento_ativo,data_termino_tratamento)"
+		String sqlInsert = "insert into TB_MTC_TRAT_MED_PACIENTE ("
+				+ "id_trat_med_paciente"
+				+ ",quantidade_medicamento"
+				+ ",data_inicio_tratamento"
+				+ ",id_med_dosagem"
+				+ ",id_doenca"
+				+ ",id_paciente"
+				+ ",tratamento_ativo"
+				+ ",data_termino_tratamento)"
 				+ "values (seq_id_trat_med_paciente.nextval,?,?,?,?,?,1,null)";
 		
         PacienteDAO pacienteDAO = new PacienteDAO();
 
         try (PreparedStatement pstmt = conn.prepareStatement(sqlInsert)) {
         	
-        	
-        	//System.out.println(tratamentoPaciente.getQuantidadeMedicamento());
             Date dataRecebida = null;
             
-            
             dataRecebida = Date.valueOf(tratamentoPaciente.getDataInicioTratamento());   
-            
             pstmt.setDouble(1, tratamentoPaciente.getQuantidadeMedicamento());
-            System.out.println("entrou1");
-
             pstmt.setDate(2,dataRecebida);
-            System.out.println("entrou2");
-
             pstmt.setInt(3, tratamentoPaciente.getIdMedicamento());
-            
-            System.out.println("entrou3");
-
             pstmt.setInt(4, tratamentoPaciente.getIdDoenca());
-            
-            System.out.println("entrou4");
-
             pstmt.setInt(5,pacienteDAO.retornaIdPaciente(documentoPaciente));
-            
-            System.out.println("entrou5");
-
-
             pstmt.execute();
             pstmt.close();
 

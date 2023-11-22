@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.meditracker.dominio.Doenca;
-import br.com.meditracker.dominio.ImplDoenca;
+import br.com.meditracker.dominio.RepositorioDoencas;
 import br.com.meditracker.dominio.Medicamento;
 
-public class DoencaDAO implements ImplDoenca {
+public class DoencaDAO implements RepositorioDoencas {
 	
     Connection conn = new ConnectionFactory().criaConexao();
 
@@ -36,8 +36,8 @@ public class DoencaDAO implements ImplDoenca {
 			
 					
 		}catch(SQLException e) {
-			throw new RuntimeException(e.getMessage());
 			
+			throw new RuntimeException(e.getMessage());
 			
 		}
 		return doencas;
@@ -46,8 +46,11 @@ public class DoencaDAO implements ImplDoenca {
 	
 	public void fecharConexao() {
 		try {
+			
 			conn.close();
+			
 		} catch (SQLException e) {
+			
 			throw new RuntimeException(e.getMessage());
 		}
 	}

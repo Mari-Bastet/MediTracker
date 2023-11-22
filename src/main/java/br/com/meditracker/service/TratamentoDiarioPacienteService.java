@@ -2,24 +2,24 @@ package br.com.meditracker.service;
 
 import java.time.LocalDate;
 
-import br.com.meditracker.dominio.ImplTratamentoDiarioPaciente;
+import br.com.meditracker.dominio.RepositorioTratamentoDiarioPaciente;
 import br.com.meditracker.dominio.TratamentoDiarioPaciente;
 
 public class TratamentoDiarioPacienteService {
 	
 	
-	ImplTratamentoDiarioPaciente implTratDiaPaciente;
+	RepositorioTratamentoDiarioPaciente repositorioTratamentoDiarioPaciente;
 	
 	
-	public TratamentoDiarioPacienteService(ImplTratamentoDiarioPaciente implTratDiaPaciente) {
-		this.implTratDiaPaciente = implTratDiaPaciente;
+	public TratamentoDiarioPacienteService(RepositorioTratamentoDiarioPaciente implTratDiaPaciente) {
+		this.repositorioTratamentoDiarioPaciente = implTratDiaPaciente;
 	}	
 	
 	
 	public void AtualizaTratMedDiario(TratamentoDiarioPaciente tratDiaPaciente,LocalDate dataRegistro) {
 		
-		implTratDiaPaciente.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
-		implTratDiaPaciente.fecharConexao();
+		repositorioTratamentoDiarioPaciente.atualizaRegistroDiarioMed(tratDiaPaciente, dataRegistro);
+		repositorioTratamentoDiarioPaciente.fecharConexao();
 	}
 
 

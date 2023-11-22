@@ -5,23 +5,33 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import br.com.meditracker.dominio.RepositorioRelatorio;
 import br.com.meditracker.infra.dao.RelatorioTratamentoPacienteDAO;
+import br.com.meditracker.service.RelatorioService;
 
 @Path("downloads")
 public class RelatorioPacienteController {
 	
 	
-	RelatorioTratamentoPacienteDAO relatorio = new RelatorioTratamentoPacienteDAO() ;
+	private RepositorioRelatorio relatorioDAO;
+	private RelatorioService relatorioService;
+	
+	public RelatorioPacienteController() {
+		relatorioDAO = new RelatorioTratamentoPacienteDAO();
+		
+		relatorioService = new RelatorioService(relatorioDAO);
+		
+	}
 
 	@GET
-	@Path("/{DOCUMENTO_PACIENTE}")
+	@Path("/relatorioTratamento/{DOCUMENTO_PACIENTE}")
 	public Response downloadRelatorio(@PathParam("DOCUMENTO_PACIENTE") String documentoPaciente ) {
 		
 		
         try {
-        	relatorio.geraPdf(documentoPaciente);
+        	relatorioService.geraPdf(documentoPaciente);
             
-            return Response.status(Response.Status.CREATED).entity("Relatório salvo na área de trabalho!").build();
+            return Response.status(Response.Status.OK).entity("Relatório salvo na área de trabalho!").build();
             
         }catch(RuntimeException e) {
             System.out.println(e.getMessage());

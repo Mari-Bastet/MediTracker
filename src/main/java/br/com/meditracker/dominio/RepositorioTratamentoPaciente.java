@@ -3,7 +3,7 @@ package br.com.meditracker.dominio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public interface ImplementaTratamentoPaciente {
+public interface RepositorioTratamentoPaciente {
 	
 	void insereTratamentoPaciente(TratamentoPaciente tratamentoPaciente, String documentoPaciente);
 	
