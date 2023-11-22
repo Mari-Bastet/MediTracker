@@ -54,7 +54,7 @@ public class PacienteDAO implements RepositorioPacientes{
             	
             	Date dataRecebida = Date.valueOf(paciente.getDataNascimentoPaciente());
             	
-            	dataRecebida = Date.valueOf(paciente.getDataNascimentoPaciente());                  	
+            	
                 pstmt.setString(1, paciente.getNomePaciente());
                 pstmt.setDate(2, dataRecebida);
                 pstmt.setString(3, paciente.getDocumentoPaciente());
