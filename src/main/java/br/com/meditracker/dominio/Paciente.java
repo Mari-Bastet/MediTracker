@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import br.com.editracker.infra.ia.IntegracaoIA;
+
 public class Paciente {
 	
 	 @JsonProperty
@@ -86,5 +88,13 @@ public class Paciente {
 
 		public void setEmailPaciente(String emailPaciente) {
 			this.emailPaciente = emailPaciente;
+		}
+		
+		public String realizaPergunta(String pergunta) {
+			
+			RepositorioPerguntas repositorio = new IntegracaoIA();
+			String resposta = repositorio.responderPerguntas(pergunta);
+			return resposta;
+			
 		}
 }

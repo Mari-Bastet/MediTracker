@@ -8,9 +8,11 @@ public class PacienteService {
 	
 	
 	private RepositorioPaciente repositorioPaciente;
+	//private RepositorioPerguntas repostorioPerguntas;
 
 	public PacienteService(RepositorioPaciente repositorioPaciente) {
 		this.repositorioPaciente = repositorioPaciente;
+		//this.repostorioPerguntas = repostorioPerguntas;
 	}
 	
 	
@@ -25,6 +27,13 @@ public class PacienteService {
 		repositorioPaciente.cadastraPaciente(paciente);
 		repositorioPaciente.fecharConexao();
 
+	}
+	
+	public String respondePerguntaAssistente(String pergunta) {
+		Paciente paciente = new Paciente();
+		String resposta = paciente.realizaPergunta(pergunta);
+		return resposta;
+		
 	}
 
 }

@@ -39,12 +39,8 @@ public class TratamentoDiarioPacienteController {
         	
 	        LocalDate data = LocalDate.parse(dataRegistro);
 	        
-	        //tratDiaPacDAO.atualizaRegDiario(tratDiaPaciente, data);
-	        
 	        tratDiaPacienteService.AtualizaTratMedDiario(tratDiaPaciente, data);
         	
-            //pacienteService.fechaConexao();
-            
             return Response.status(Response.Status.OK).build();
             
         }catch(RuntimeException e) {

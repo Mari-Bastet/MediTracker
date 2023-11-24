@@ -11,6 +11,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.com.meditracker.dominio.RepositorioPaciente;
+import br.com.meditracker.dominio.RepositorioPerguntas;
+import br.com.editracker.infra.ia.IntegracaoIA;
 import br.com.meditracker.dominio.Paciente;
 import br.com.meditracker.infra.dao.PacienteDAO;
 import br.com.meditracker.service.PacienteService;
@@ -21,11 +23,14 @@ public class PacienteController {
 	
 	private RepositorioPaciente pacienteDAO;
 	private PacienteService pacienteService;
+	//private RepositorioPerguntas integracaoIA;
 	
 	public PacienteController() {
 		pacienteDAO = new PacienteDAO();
+		//integracaoIA = new IntegracaoIA();
+		
 		pacienteService  = new PacienteService(pacienteDAO);
-	} 
+	}
 	
     @GET
     @Path("/{DOCUMENTO_PACIENTE}")
@@ -70,6 +75,34 @@ public class PacienteController {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
 
-}
+    }
+    
+    @GET
+    @Path("/perguntas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response retornaResposta(@QueryParam("PERGUNTA") String pergunta) {
+        Response.Status status = null;
+        
+        
+        
+        try {
+        String pacientePergunta = pacienteService.respondePerguntaAssistente(pergunta);
+
+        if (pacientePergunta == null) {
+            status = Response.Status.NOT_FOUND;
+            return Response.status(status).entity("Não foi possível responder sua pergunta").build();
+        } else {
+            status = Response.Status.OK;
+            return Response.status(status).entity(pacientePergunta).build();
+        }
+        
+        
+    	}catch(RuntimeException e) {
+    		e.printStackTrace();
+    		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+    	}
+    }
+    
+    
 
 }
