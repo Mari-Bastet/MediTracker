@@ -13,6 +13,7 @@ public class IntegracaoIA implements RepositorioPerguntas{
 	
 	public String responderPerguntas(String pergunta) {
 	
+	//String apiKey = "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";
     String url = "https://api.openai.com/v1/chat/completions";
     String modelo = "gpt-3.5-turbo-1106";
    
@@ -25,7 +26,7 @@ public class IntegracaoIA implements RepositorioPerguntas{
        Request request = new Request.Builder()
                .url(url)
                .post(requestBody)
-               .addHeader("Authorization", "Bearer " + "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")
+               .addHeader("Authorization", "Bearer " + "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")
                .addHeader("Content-Type", "application/json")
                .build();
        

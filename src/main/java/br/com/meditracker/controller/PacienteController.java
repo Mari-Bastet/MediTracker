@@ -86,7 +86,7 @@ public class PacienteController {
         
         
         try {
-        String pacientePergunta = pacienteService.respondePerguntaAssistente(pergunta);
+        String pacientePergunta = pacienteService.realizaPerguntaAssistente(pergunta);
 
         if (pacientePergunta == null) {
             status = Response.Status.NOT_FOUND;

@@ -29,7 +29,7 @@ public class PacienteService {
 
 	}
 	
-	public String respondePerguntaAssistente(String pergunta) {
+	public String realizaPerguntaAssistente(String pergunta) {
 		Paciente paciente = new Paciente();
 		String resposta = paciente.realizaPergunta(pergunta);
 		return resposta;
